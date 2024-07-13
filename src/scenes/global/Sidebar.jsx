@@ -124,6 +124,13 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
+            <Item
+              title="Home"
+              to="/home"
+              icon={<HomeOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
 
             <Typography
               variant="h6"
@@ -214,6 +221,13 @@ const Sidebar = () => {
             <Item
               title="Geography Chart"
               to="/geography"
+              icon={<MapOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Purchase Orders"
+              to="/purchase"
               icon={<MapOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
