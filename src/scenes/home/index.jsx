@@ -6,7 +6,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import SellIcon from "@mui/icons-material/Sell";
 
-const Dashboard = () => {
+const Home = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const sections = [
@@ -105,4 +105,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Home;
