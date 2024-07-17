@@ -2,12 +2,11 @@ import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import { mockTransactions } from "../../data/mockData";
 import Header from "../../components/Header";
-import PurchaseBox from "../../components/dashboard_box/PurchaseBox";
-import AlertsBox from "../../components/dashboard_box/AlertsBox";
-import InventoryBox from "../../components/dashboard_box/InventoryBox";
-import ReportsBox from "../../components/dashboard_box/ReportsBox";
-import SalesBox from "../../components/dashboard_box/SalesBox";
-
+import PurchaseBox from "../../components/home_box/PurchaseBox";
+import AlertsBox from "../../components/home_box/AlertsBox";
+import InventoryBox from "../../components/home_box/InventoryBox";
+import ReportsBox from "../../components/home_box/ReportsBox";
+import SalesBox from "../../components/home_box/SalesBox";
 
 
 const Home = () => {
@@ -18,7 +17,7 @@ const Home = () => {
     <Box m="20px">
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title="HOME" subtitle="Welcome to your OMS home!" />
+        <Header title="HOME" subtitle="Welcome to your OMSaaS home!" />
       </Box>
 
       {/* GRID & CHARTS */}
@@ -34,40 +33,39 @@ const Home = () => {
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
         >
-          <PurchaseBox/>
+          <PurchaseBox />
         </Box>
         <Box
           gridColumn="span 4"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
         >
-          <InventoryBox/>
+          <InventoryBox />
         </Box>
         <Box
           gridColumn="span 4"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
         >
-          <SalesBox/>
+          <SalesBox />
         </Box>
 
         {/* ROW 2 */}
         <Box
           gridColumn="span 8"
-          gridRow="span 2"
+          gridRow="span 3"
           backgroundColor={colors.primary[400]}
         >
-          <ReportsBox/>
+          <ReportsBox />
         </Box>
 
         <Box
           gridColumn="span 4"
-          gridRow="span 2"
+          gridRow="span 3"
           backgroundColor={colors.primary[400]}
         >
-          <AlertsBox/>
+          <AlertsBox />
         </Box>
-        
       </Box>
     </Box>
   );

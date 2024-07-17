@@ -7,6 +7,9 @@ import Home from "./scenes/home";
 import Purchase from "./scenes/purchase";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
+import Inventory from "./scenes/inventory";
+import Sales from "./scenes/sales";
+import Tutorial from "./scenes/tutorial";
 
 
 function App() {
@@ -24,7 +27,10 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/purchase" element={<Purchase />} />
+              <Route path="/inventory" element={<Inventory />} />
+              <Route path="/sales" element={<Sales />} />
               <Route path="/faq" element={<FAQ />} />
+              <Route path="/tutorial" element={<Tutorial />} />
             </Routes>
           </main>
         </div>

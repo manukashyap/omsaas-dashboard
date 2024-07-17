@@ -12,25 +12,24 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/Inbox';
 import DraftsIcon from '@mui/icons-material/Drafts';
-import WarehouseIcon from '@mui/icons-material/Warehouse';
+import SellIcon from '@mui/icons-material/Sell';
+import BoxHeader from "./BoxHeader";
 
-const InventoryBox = ({}) => {
+const SalesBox = ({}) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
   
     return (
       <Box width="100%"  justifyContent="center">
         {/* Heading and icon box */}
-        <Box display="flex" flexDirection="row" justifyContent="center" padding="10px 10px">
-          <WarehouseIcon sx={{ fontSize: 40 }} />
-          <Typography
-            variant="h3"
-            fontWeight="bold"
-            sx={{ color: colors.grey[100], padding: "10px 10px" }}
-          >
-            Inventory
-          </Typography>
-        </Box>
+        <BoxHeader
+            icon={
+              <SellIcon
+                sx={{ color: colors.greenAccent[600], fontSize: "40px" }}
+              />
+            }
+            title="Sales"
+          />
   
         {/* Two boxes displaying number and amount of PO */}
         <Box
@@ -118,4 +117,4 @@ const InventoryBox = ({}) => {
     );
   };
   
-  export default InventoryBox;
+  export default SalesBox;

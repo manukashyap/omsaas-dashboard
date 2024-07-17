@@ -96,7 +96,7 @@ const Sidebar = () => {
                   alt="profile-user"
                   width="100px"
                   height="100px"
-                  src={`../../assets/fresh-food-logo.jpeg`}
+                  src={`../../assets/oms-logo.png`}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
               </Box>
@@ -134,21 +134,21 @@ const Sidebar = () => {
             </Typography>
             <Item
               title="Purchase Orders"
-              to="/team"
+              to="/purchase"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Inventory"
-              to="/contacts"
+              to="/inventory"
               icon={<ContactsOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Sales"
-              to="/invoices"
+              to="/sales"
               icon={<ReceiptOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
