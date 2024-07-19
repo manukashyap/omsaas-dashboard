@@ -3,6 +3,7 @@ import Paper from '@mui/material/Paper';
 import { tokens } from "../../theme";
 import { styled } from '@mui/material/styles';
 import { Box, Typography, useTheme } from "@mui/material";
+import GridItem from './GridItem';
 
 const ReportsGrid = ({}) => {
   const theme = useTheme();
@@ -17,7 +18,7 @@ const ReportsGrid = ({}) => {
   return (
     <Grid display="flex" container rowSpacing={4} columnSpacing={{ xs: 4, sm: 2, md: 3 }}>
       <Grid item xs={6}>
-        <Item>1</Item>
+        <GridItem>1</GridItem>
       </Grid>
       <Grid item xs={6}>
         <Item>2</Item>

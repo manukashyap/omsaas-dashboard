@@ -55,6 +55,7 @@ const Home = () => {
           gridColumn="span 8"
           gridRow="span 3"
           backgroundColor={colors.primary[400]}
+          width="100%"
         >
           <ReportsBox />
         </Box>

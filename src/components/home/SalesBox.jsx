@@ -99,7 +99,7 @@ const SalesBox = ({}) => {
                 <ListItemIcon>
                   <InboxIcon />
                 </ListItemIcon>
-                <ListItemText primary="Create purchase order"  primaryTypographyProps={{fontSize: '16px'}} />
+                <ListItemText primary="Sales by Store"  primaryTypographyProps={{fontSize: '16px'}} />
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
@@ -107,7 +107,7 @@ const SalesBox = ({}) => {
                 <ListItemIcon>
                   <DraftsIcon />
                 </ListItemIcon>
-                <ListItemText primary="Add new vendor"  primaryTypographyProps={{fontSize: '16px'}} />
+                <ListItemText primary="Sales by Product"  primaryTypographyProps={{fontSize: '16px'}} />
               </ListItemButton>
             </ListItem>
           </List>

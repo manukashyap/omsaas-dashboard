@@ -4,7 +4,6 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import TagIcon from "@mui/icons-material/Tag";
 import Divider from "@mui/material/Divider";
-import { ClassNames } from "@emotion/react";
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -88,17 +87,19 @@ const InventoryBox = ({}) => {
         <Box
             display="flex"
             width="100%"
-            flexDirection="column"
+            flexDirection="row"
             justifyContent="center"
-            padding="10px 10px"
+            padding="20px 20px"
           >
-              <List>
+              <List display="flex"
+            width="100%"
+            disablePadding>
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
                   <InboxIcon />
                 </ListItemIcon>
-                <ListItemText primary="Create purchase order"  primaryTypographyProps={{fontSize: '16px'}} />
+                <ListItemText primary="Warehouses"  primaryTypographyProps={{fontSize: '16px'}} />
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
@@ -106,7 +107,27 @@ const InventoryBox = ({}) => {
                 <ListItemIcon>
                   <DraftsIcon />
                 </ListItemIcon>
-                <ListItemText primary="Add new vendor"  primaryTypographyProps={{fontSize: '16px'}} />
+                <ListItemText primary="Stores"  primaryTypographyProps={{fontSize: '16px'}} />
+              </ListItemButton>
+            </ListItem>
+          </List>
+          <List display="flex"
+            width="100%"
+            disablePadding>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <InboxIcon />
+                </ListItemIcon>
+                <ListItemText primary="Vendors"  primaryTypographyProps={{fontSize: '16px'}} />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <DraftsIcon />
+                </ListItemIcon>
+                <ListItemText primary="Products"  primaryTypographyProps={{fontSize: '16px'}} />
               </ListItemButton>
             </ListItem>
           </List>
