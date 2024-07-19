@@ -2,11 +2,11 @@ import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import { mockTransactions } from "../../data/mockData";
 import Header from "../../components/Header";
-import PurchaseBox from "../../components/home_box/PurchaseBox";
-import AlertsBox from "../../components/home_box/AlertsBox";
-import InventoryBox from "../../components/home_box/InventoryBox";
-import ReportsBox from "../../components/home_box/ReportsBox";
-import SalesBox from "../../components/home_box/SalesBox";
+import PurchaseBox from "../../components/home/PurchaseBox";
+import AlertsBox from "../../components/home/AlertsBox";
+import InventoryBox from "../../components/home/InventoryBox";
+import ReportsBox from "../../components/home/ReportsBox";
+import SalesBox from "../../components/home/SalesBox";
 
 
 const Home = () => {
