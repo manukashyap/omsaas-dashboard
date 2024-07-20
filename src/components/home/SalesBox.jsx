@@ -4,7 +4,6 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import TagIcon from "@mui/icons-material/Tag";
 import Divider from "@mui/material/Divider";
-import { ClassNames } from "@emotion/react";
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
