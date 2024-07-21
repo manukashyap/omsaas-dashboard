@@ -11,6 +11,8 @@ import { ColorModeContext, useMode } from "./theme";
 import Inventory from "./scenes/inventory";
 import Sales from "./scenes/sales";
 import Tutorial from "./scenes/tutorial";
+import PurchaseOrder from "./scenes/purchase_order";
+import Pending from "./scenes/pending";
 
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/purchase" element={<Purchase />} />
+              <Route path="/pending" element={<Pending />} />
+              <Route path="/purchaseOrderCreate" element={<PurchaseOrder />} />
               <Route path="/inventory" element={<Inventory />} />
               <Route path="/sales" element={<Sales />} />
               <Route path="/faq" element={<FAQ />} />
