@@ -4,13 +4,13 @@ import { tokens } from "../../theme";
 import { mockDataContacts } from "../../data/mockData";
 import { useTheme } from "@mui/material";
 
-const PurchaseList = () => {
+const VendorsList = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   const columns = [
-    { field: "id", headerName: "ID", flex: 0.5 },
-    { field: "registrarId", headerName: "Registrar ID" },
+    { field: "id", headerName: "Serial", flex: 0.5 },
+    { field: "vendorId", headerName: "Vendor ID" },
     {
       field: "name",
       headerName: "Name",
@@ -94,4 +94,4 @@ const PurchaseList = () => {
   );
 };
 
-export default PurchaseList;
+export default VendorsList;

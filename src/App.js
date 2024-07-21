@@ -13,6 +13,7 @@ import Sales from "./scenes/sales";
 import Tutorial from "./scenes/tutorial";
 import PurchaseOrder from "./scenes/purchase_order";
 import Pending from "./scenes/pending";
+import Vendors from "./scenes/vendors";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/purchase" element={<Purchase />} />
               <Route path="/pending" element={<Pending />} />
+              <Route path="/vendors" element={<Vendors />} />
               <Route path="/purchaseOrderCreate" element={<PurchaseOrder />} />
               <Route path="/inventory" element={<Inventory />} />
               <Route path="/sales" element={<Sales />} />
