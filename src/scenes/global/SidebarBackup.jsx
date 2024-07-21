@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
+import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
@@ -11,6 +11,8 @@ import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
+import WarehouseIcon from '@mui/icons-material/Warehouse';
+import AssignmentIcon from "@mui/icons-material/Assignment";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -30,22 +32,21 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   );
 };
 
-const SubItem = ({ title, to, icon, selected, setSelected }) => {
+const SubMenuItem = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   return (
-    <MenuItem
+    <SubMenu
       active={selected === title}
       style={{
         color: colors.grey[100],
-        margin: "15px",
       }}
       onClick={() => setSelected(title)}
       icon={icon}
     >
       <Typography>{title}</Typography>
       <Link to={to} />
-    </MenuItem>
+    </SubMenu>
   );
 };
 
@@ -151,28 +152,87 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
 
-            <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
+            <SubMenu
+            title="Purchase Orders"
+            to="/"
+            icon={<AssignmentIcon />}
+            selected={selected}
+            setSelected={setSelected}
             >
-              Data
-            </Typography>
-            <Item
-              title="Purchase Orders"
-              // to="/"
+              <Item
+              title="View Purchase Orders"
+              to="/purchase"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-            <SubItem
-              title="View Purchase Orders"
-              to="/purchase"
+            <Item
+              title="Create Purchase Orders"
+              to="/purchaseCreate"
               display={selected === "Purchase Orders" ? "flex" : "none"} 
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
+            <Item
+              title="Vendors List"
+              to="/vendors"
+              display={selected === "Purchase Orders" ? "flex" : "none"} 
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Add new vendors"
+              to="/vendorAdd"
+              display={selected === "Purchase Orders" ? "flex" : "none"} 
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
+            </SubMenu>
+            <SubMenu
+            title="Inventory"
+            to="/"
+            icon={<WarehouseIcon />}
+            selected={selected}
+            setSelected={setSelected}
+            >
+              <Item
+              title="Store Details"
+              to="/stores"
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Add new store"
+              to="/storeCreate"
+              display={selected === "Purchase Orders" ? "flex" : "none"} 
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Product stock"
+              to="/productStock"
+              display={selected === "Purchase Orders" ? "flex" : "none"} 
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Add new vendors"
+              to="/vendorAdd"
+              display={selected === "Purchase Orders" ? "flex" : "none"} 
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
+            </SubMenu>
+          
             <Item
               title="Inventory"
               to="/inventory"
