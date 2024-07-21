@@ -2,10 +2,9 @@ import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataContacts } from "../../data/mockData";
-import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
 
-const Contacts = () => {
+const PurchaseList = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -54,10 +53,6 @@ const Contacts = () => {
 
   return (
     <Box m="20px">
-      <Header
-        title="CONTACTS"
-        subtitle="List of Contacts for Future Reference"
-      />
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -100,4 +95,4 @@ const Contacts = () => {
   );
 };
 
-export default Contacts;
+export default PurchaseList;
