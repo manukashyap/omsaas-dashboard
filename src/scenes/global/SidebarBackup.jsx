@@ -182,7 +182,7 @@ const Sidebar = () => {
             setSelected={setSelected}
             >
               <Item
-              title="Stores"
+              title="By Store"
               to="/stores"
               width="100%"
                   height="100%"
@@ -191,7 +191,7 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
-              title="Products"
+              title="By Product"
               to="/productStock"
               display={selected === "Inventory" ? "flex" : "none"} 
               icon={<PeopleOutlinedIcon />}
@@ -199,7 +199,7 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
-              title="Inventory"
+              title="By Vendor"
               to="/inventoryTrack"
               display={selected === "Inventory" ? "flex" : "none"} 
               icon={<PeopleOutlinedIcon />}
@@ -208,15 +208,40 @@ const Sidebar = () => {
             />
 
             </SubMenu>
-          
-            <Item
-              title="Sales"
-              to="/sales"
-              icon={<ReceiptOutlinedIcon />}
+
+            <SubMenu
+            title="Sales"
+            to="/"
+            icon={<ReceiptOutlinedIcon />}
+            selected={selected}
+            setSelected={setSelected}
+            >
+              <Item
+              title="By Store"
+              to="/storeSales"
+              width="100%"
+                  height="100%"
+              icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-
+            <Item
+              title="By Product"
+              to="/productSales"
+              display={selected === "Inventory" ? "flex" : "none"} 
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="By Vendor"
+              to="/vendorSales"
+              display={selected === "Inventory" ? "flex" : "none"} 
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            </SubMenu>
             <Typography
               variant="h6"
               color={colors.grey[300]}
