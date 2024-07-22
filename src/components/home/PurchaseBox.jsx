@@ -2,6 +2,7 @@ import { Box, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import TagIcon from "@mui/icons-material/Tag";
 import Divider from "@mui/material/Divider";
 import { ClassNames } from "@emotion/react";
@@ -47,17 +48,17 @@ const PurchaseBox = ({}) => {
           justifyContent="center"
           padding="10px 10px"
         >
-          <AttachMoneyIcon sx={{ fontSize: 35 }} />
+          <CurrencyRupeeIcon sx={{ fontSize: 35 }} />
 
           <Typography
             variant="h4"
             sx={{ color: colors.grey[100] }}
             padding="3px 3px"
           >
-            Rs 45,500
+            ₹ 4,10,000
           </Typography>
           <Typography variant="h4" sx={{ color: colors.greenAccent[500] }}>
-            Order Value
+            Pending Order Value
           </Typography>
         </Box>
         <Divider orientation="vertical" variant="fullwidth" flexItem />
@@ -75,10 +76,10 @@ const PurchaseBox = ({}) => {
             sx={{ color: colors.grey[100] }}
             padding="3px 3px"
           >
-            57
+            5
           </Typography>
           <Typography variant="h4" sx={{ color: colors.greenAccent[500] }}>
-            Active order
+            Pending Orders
           </Typography>
         </Box>
       </Box>

@@ -33,28 +33,28 @@ const AlertsBox = ({}) => {
             variant="h5"
             fontWeight="600"
           >
-            Recent Orders
+            Item
           </Typography>
           <Typography
             color={colors.greenAccent[500]}
             variant="h5"
             fontWeight="600"
           >
-            Order Date
+            Time
           </Typography>
           <Typography
             color={colors.greenAccent[500]}
             variant="h5"
             fontWeight="600"
           >
-            Order Value
+            Value
           </Typography>
           <Typography
             color={colors.greenAccent[500]}
             variant="h5"
             fontWeight="600"
           >
-            Order Quantity
+            Quantity
           </Typography>
 
         </Box>
@@ -92,7 +92,7 @@ const AlertsBox = ({}) => {
             p="5px 10px"
             borderRadius="4px"
           >
-            ${transaction.cost}
+            ₹{transaction.cost}
           </Box>
           <Box
             backgroundColor={colors.greenAccent[500]}
