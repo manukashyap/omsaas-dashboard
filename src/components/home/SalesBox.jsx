@@ -13,6 +13,7 @@ import InboxIcon from '@mui/icons-material/Inbox';
 import DraftsIcon from '@mui/icons-material/Drafts';
 import SellIcon from '@mui/icons-material/Sell';
 import BoxHeader from "./BoxHeader";
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 
 const SalesBox = ({}) => {
     const theme = useTheme();
@@ -23,7 +24,7 @@ const SalesBox = ({}) => {
         {/* Heading and icon box */}
         <BoxHeader
             icon={
-              <SellIcon
+              <ShoppingCartIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "40px" }}
               />
             }
@@ -46,14 +47,14 @@ const SalesBox = ({}) => {
             justifyContent="center"
             padding="10px 10px"
           >
-            <AttachMoneyIcon sx={{ fontSize: 35 }} />
+            <CurrencyRupeeIcon sx={{ fontSize: 35 }} />
   
             <Typography
               variant="h4"
               sx={{ color: colors.grey[100] }}
               padding="3px 3px"
             >
-              Rs 45,500
+              45,500
             </Typography>
             <Typography variant="h4" sx={{ color: colors.greenAccent[500] }}>
               Order Value

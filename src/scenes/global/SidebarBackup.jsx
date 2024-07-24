@@ -20,6 +20,7 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import CastForEducationIcon from '@mui/icons-material/CastForEducation';
 import SubjectIcon from '@mui/icons-material/Subject';
 import KeyIcon from '@mui/icons-material/Key';
+import CircleIcon from '@mui/icons-material/Circle';
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -166,21 +167,21 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <SubMenu
-            title="Purchase Orders"
+            title="Purchases"
             to="/"
             icon={<AssignmentIcon />}
             selected={selected}
             setSelected={setSelected}
             >
               <Item
-              title="View Purchase Orders"
+              title="View Purchase Order"
               to="/purchase"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Create Purchase Orders"
+              title="Create Purchase Order"
               to="/purchaseCreate"
               display={selected === "Purchase Orders" ? "flex" : "none"} 
               icon={<PeopleOutlinedIcon />}
@@ -214,14 +215,14 @@ const Sidebar = () => {
             setSelected={setSelected}
             >
             <Item
-              title="Transfer Stocks"
+              title="Transfer Stock"
               to="/internalOrder"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Adjust Stocks"
+              title="Adjust Stock"
               to="/adjustInventory"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
@@ -297,7 +298,7 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
-              title="View Customers"
+              title="View Customer"
               to="/customer"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
