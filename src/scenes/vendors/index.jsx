@@ -5,14 +5,15 @@ import PurchaseList from "../../components/purchase/PurchaseList";
 import AddIcon from "@mui/icons-material/Add";
 import { Link } from "react-router-dom";
 import BackendPurchaseList from "../../components/purchase/BackendPurchaseList";
+import VendorsList from "../../components/vendors/VendorsList";
 
-const Purchase = () => {
+const Vendors = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   return (
     <Box m="20px">
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title="Purchases" subtitle="Purchase Order Details" />
+        <Header title="Vendors" subtitle="Vendor details page" />
 
         <Box>
           <Link underline="none" to={"/purchaseOrderCreate"}>
@@ -30,15 +31,15 @@ const Purchase = () => {
               }}
             >
               <AddIcon sx={{ mr: "10px" }} />
-              Create new purchase order
+              Add new vendor
             </Button>
           </Link>
         </Box>
       </Box>
-      <PurchaseList />
+      <VendorsList />
     </Box>
     
   );
 };
 
-export default Purchase;
+export default Vendors;

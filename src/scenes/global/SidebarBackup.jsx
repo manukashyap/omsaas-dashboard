@@ -6,7 +6,7 @@ import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
+import { PendingRounded } from "@mui/icons-material";
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
@@ -21,6 +21,8 @@ import CastForEducationIcon from '@mui/icons-material/CastForEducation';
 import SubjectIcon from '@mui/icons-material/Subject';
 import KeyIcon from '@mui/icons-material/Key';
 import CircleIcon from '@mui/icons-material/Circle';
+import DensitySmallIcon from '@mui/icons-material/DensitySmall';
+
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -33,41 +35,12 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
       }}
       onClick={() => setSelected(title)}
       icon={icon}
+      padding="2px 2px"
     >
       <Typography>{title}</Typography>
       <Link to={to} />
     </MenuItem>
   );
-};
-
-const SubMenuItem = ({ title, to, icon, selected, setSelected }) => {
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
-  return (
-    <SubMenu
-      active={selected === title}
-      style={{
-        color: colors.grey[100],
-      }}
-      onClick={() => setSelected(title)}
-      icon={icon}
-    >
-      <Typography>{title}</Typography>
-      <Link to={to} />
-    </SubMenu>
-  );
-};
-
-const menuData = {
-  "Home": null,
-  "Purchase Orders": {
-    "View Purchase Order": null,
-    "Create Purchase Order": null
-  },
-  "Inventory": {
-    "Stores": null,
-    "Warehouses": null
-  }
 };
 
 const Sidebar = () => {
@@ -97,7 +70,18 @@ const Sidebar = () => {
       }}
     >
       <ProSidebar collapsed={isCollapsed}>
-        <Menu iconShape="square">
+        <Menu iconShape="square"
+        menuItemStyles={{
+          button: ({ level, active, disabled }) => {
+            // only apply styles on first level elements of the tree
+            if (level === 0)
+              return {
+                color: disabled ? '#f5d9ff' : '#d359ff',
+                backgroundColor: active ? '#eecef9' : undefined,
+              };
+          },
+        }}
+        >
           {/* LOGO AND MENU ICON */}
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
@@ -151,7 +135,8 @@ const Sidebar = () => {
             </Box>
           )}
 
-          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+          <Box width="100%"
+                  height="100%"paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
               title="Home"
               to="/"
@@ -170,27 +155,33 @@ const Sidebar = () => {
             title="Purchases"
             to="/"
             icon={<AssignmentIcon />}
+            style={{
+              color: colors.grey[100],
+            }}
             selected={selected}
             setSelected={setSelected}
             >
               <Item
               title="View Purchase Order"
+              width="100px"
+                  height="100px"
+              title="All Orders"
               to="/purchase"
-              icon={<PeopleOutlinedIcon />}
+              icon={<DensitySmallIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Create Purchase Order"
-              to="/purchaseCreate"
+              title="Pending Orders"
+              to="/pending"
               display={selected === "Purchase Orders" ? "flex" : "none"} 
-              icon={<PeopleOutlinedIcon />}
+              icon={<PendingRounded />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Add Vendor"
-              to="/vendorAdd"
+              title="Vendors"
+              to="/vendors"
               display={selected === "Purchase Orders" ? "flex" : "none"} 
               icon={<PeopleOutlinedIcon />}
               selected={selected}
@@ -204,8 +195,6 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            
-
             </SubMenu>
             <SubMenu
             title="Inventory"
@@ -239,6 +228,11 @@ const Sidebar = () => {
               title="Add Store"
               to="/storeCreate"
               display={selected === "Purchase Orders" ? "flex" : "none"} 
+              <Item
+              title="Stores"
+              to="/stores"
+              width="100%"
+              height="100%"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -255,6 +249,9 @@ const Sidebar = () => {
               title="Add Product"
               to="/productCreate"
               display={selected === "Purchase Orders" ? "flex" : "none"} 
+              title="Products"
+              to="/productStock"
+              display={selected === "Inventory" ? "flex" : "none"} 
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -263,6 +260,9 @@ const Sidebar = () => {
               title="View Product"
               to="/product"
               display={selected === "Purchase Orders" ? "flex" : "none"} 
+              title="Inventory"
+              to="/inventoryTrack"
+              display={selected === "Inventory" ? "flex" : "none"} 
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -294,6 +294,9 @@ const Sidebar = () => {
               title="Create Customer"
               to="/customerCreate"
               icon={<PeopleOutlinedIcon />}
+              title="Sales"
+              to="/sales"
+              icon={<ReceiptOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
