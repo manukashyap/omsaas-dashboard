@@ -49,15 +49,15 @@ const PurchaseOrderForm = () => {
             >
               <Autocomplete
                 disablePortal
-                id = "vendor_id"
-                name = "vendor_id"
+                /*id = "vendor_id"
+                name = "vendor_id"*/
                 options={mockDataVendor}
                 getOptionLabel={option => option.vendorName}
                 sx={{ gridColumn: "span 2" }}
                 onChange={(e, value) => {
                   console.log(value);
                   setFieldValue(
-                    "vendor_id",
+                    /*"vendor_id",*/
                     value !== null ? value : initialValues.vendorName
                   );
                 }}

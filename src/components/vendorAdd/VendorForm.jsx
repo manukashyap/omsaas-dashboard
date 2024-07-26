@@ -10,7 +10,7 @@ import FaxIcon from '@mui/icons-material/Fax';
 import HomeIcon from '@mui/icons-material/Home';
 import PinDropIcon from '@mui/icons-material/PinDrop';
 import LanguageIcon from '@mui/icons-material/Language';
-import { mockDataVendor } from "../../data/mockData";
+import { mockDataProduct } from "../../data/mockData";
 import Autocomplete from '@mui/material/Autocomplete';
 
 const VendorForm = () => {
@@ -23,7 +23,7 @@ const VendorForm = () => {
   return (
     <Box m="20px">
       {/*<Header title="Create Purchase Order" subtitle="Create a New User Profile" />*/}
-
+      <Header subtitle="Vendor Details" />
       <Formik
         onSubmit={handleFormSubmit}
         initialValues={initialValues}
@@ -206,6 +206,99 @@ const VendorForm = () => {
                 error={!!touched.website && !!errors.website}
                 helperText={touched.website && errors.website}
                 sx={{ gridColumn: "span 2" }}
+              />
+              {/*<Header subtitle="Product Details" />*/}
+              <Autocomplete
+                disablePortal
+                options={mockDataProduct}
+                getOptionLabel={option => option.productName}
+                sx={{ gridColumn: "span 1" }}
+                onChange={(e, value) => {
+                  console.log(value);
+                  setFieldValue(
+                    value !== null ? value : initialValues.productName
+                  );
+                }}
+                onBlur={handleBlur}
+                renderInput={(params) =>
+                  <TextField
+                    {...params}
+                    fullWidth
+                    variant="filled"
+                    type="text"
+                    label="Product Name"                  
+                    name="productName"
+                    error={!!touched.productName && !!errors.productName}
+                    helperText={touched.productName && errors.productName}
+                  />}
+              />
+              <Autocomplete
+                disablePortal
+                options={mockDataProduct}
+                getOptionLabel={option => option.productType}
+                sx={{ gridColumn: "span 1" }}
+                onChange={(e, value) => {
+                  console.log(value);
+                  setFieldValue(
+                    value !== null ? value : initialValues.productType
+                  );
+                }}
+                onBlur={handleBlur}
+                renderInput={(params) =>
+                  <TextField
+                    {...params}
+                    fullWidth
+                    variant="filled"
+                    type="text"
+                    label="Product Type"                  
+                    name="productType"
+                    error={!!touched.productType && !!errors.productType}
+                    helperText={touched.productType && errors.productType}
+                  />}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Price"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <EmailIcon />
+                    </InputAdornment>
+                  )
+                }}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.email}
+                name="email"
+                error={!!touched.email && !!errors.email}
+                helperText={touched.email && errors.email}
+                sx={{ gridColumn: "span 1" }}
+              />
+              <Autocomplete
+                disablePortal
+                options={mockDataProduct}
+                getOptionLabel={option => option.productType}
+                sx={{ gridColumn: "span 1" }}
+                onChange={(e, value) => {
+                  console.log(value);
+                  setFieldValue(
+                    value !== null ? value : initialValues.productType
+                  );
+                }}
+                onBlur={handleBlur}
+                renderInput={(params) =>
+                  <TextField
+                    {...params}
+                    fullWidth
+                    variant="filled"
+                    type="text"
+                    label="Product Type"                  
+                    name="productType"
+                    error={!!touched.productType && !!errors.productType}
+                    helperText={touched.productType && errors.productType}
+                  />}
               />
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">

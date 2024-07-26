@@ -11,7 +11,6 @@ import { ColorModeContext, useMode } from "./theme";
 import Inventory from "./scenes/inventory";
 import Sales from "./scenes/sales";
 import Tutorial from "./scenes/tutorial";
-import CreatePurchaseOrder from "./scenes/createPurchaseOrder";
 import PurchaseOrder from "./scenes/purchase_order";
 import Pending from "./scenes/pending";
 import Vendors from "./scenes/vendors";
