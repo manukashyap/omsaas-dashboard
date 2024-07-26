@@ -12,7 +12,7 @@ const Purchase = () => {
   return (
     <Box m="20px">
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title="Purchase Order" subtitle="Purchase order details page" />
+        <Header title="Purchases" subtitle="Purchase Order Details" />
 
         <Box>
           <Link underline="none" to={"/purchaseOrderCreate"}>

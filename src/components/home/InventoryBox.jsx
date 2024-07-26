@@ -13,6 +13,7 @@ import InboxIcon from '@mui/icons-material/Inbox';
 import DraftsIcon from '@mui/icons-material/Drafts';
 import WarehouseIcon from '@mui/icons-material/Warehouse';
 import BoxHeader from "./BoxHeader";
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 
 const InventoryBox = ({}) => {
     const theme = useTheme();
@@ -45,14 +46,14 @@ const InventoryBox = ({}) => {
             justifyContent="center"
             padding="10px 10px"
           >
-            <AttachMoneyIcon sx={{ fontSize: 35 }} />
+            <CurrencyRupeeIcon sx={{ fontSize: 35 }} />
   
             <Typography
               variant="h4"
               sx={{ color: colors.grey[100] }}
               padding="3px 3px"
             >
-              Rs 45,500
+              45,500
             </Typography>
             <Typography variant="h4" sx={{ color: colors.greenAccent[500] }}>
               Order Value
