@@ -44,7 +44,7 @@ const ReportsBox = ({}) => {
                 <InboxIcon />
               </ListItemIcon>
               <ListItemText
-                primary="Warehouse details"
+                primary="Sales reports"
                 primaryTypographyProps={{ fontSize: "16px" }}
               />
             </ListItemButton>
@@ -55,7 +55,7 @@ const ReportsBox = ({}) => {
                 <DraftsIcon />
               </ListItemIcon>
               <ListItemText
-                primary="Store Details"
+                primary="Product reports"
                 primaryTypographyProps={{ fontSize: "16px" }}
               />
             </ListItemButton>
@@ -66,7 +66,7 @@ const ReportsBox = ({}) => {
                 <DraftsIcon />
               </ListItemIcon>
               <ListItemText
-                primary="Store Details"
+                primary="Store reports"
                 primaryTypographyProps={{ fontSize: "16px" }}
               />
             </ListItemButton>
@@ -85,7 +85,7 @@ const ReportsBox = ({}) => {
                 <InboxIcon />
               </ListItemIcon>
               <ListItemText
-                primary="Warehouse details"
+                primary="Order reports"
                 primaryTypographyProps={{ fontSize: "16px" }}
               />
             </ListItemButton>
@@ -96,7 +96,7 @@ const ReportsBox = ({}) => {
                 <DraftsIcon />
               </ListItemIcon>
               <ListItemText
-                primary="Store Details"
+                primary="Warehouse reports"
                 primaryTypographyProps={{ fontSize: "16px" }}
               />
             </ListItemButton>
@@ -107,7 +107,7 @@ const ReportsBox = ({}) => {
                 <DraftsIcon />
               </ListItemIcon>
               <ListItemText
-                primary="Store Details"
+                primary="Vendor reports"
                 primaryTypographyProps={{ fontSize: "16px" }}
               />
             </ListItemButton>

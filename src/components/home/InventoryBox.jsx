@@ -1,7 +1,6 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import TagIcon from "@mui/icons-material/Tag";
 import Divider from "@mui/material/Divider";
 import List from '@mui/material/List';
@@ -13,7 +12,6 @@ import InboxIcon from '@mui/icons-material/Inbox';
 import DraftsIcon from '@mui/icons-material/Drafts';
 import WarehouseIcon from '@mui/icons-material/Warehouse';
 import BoxHeader from "./BoxHeader";
-import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 
 const InventoryBox = ({}) => {
     const theme = useTheme();
@@ -53,10 +51,10 @@ const InventoryBox = ({}) => {
               sx={{ color: colors.grey[100] }}
               padding="3px 3px"
             >
-              45,500
+              ₹ 4,56,500
             </Typography>
             <Typography variant="h4" sx={{ color: colors.greenAccent[500] }}>
-              Order Value
+              Inventory Value
             </Typography>
           </Box>
           <Divider orientation="vertical" variant="fullwidth" flexItem />
@@ -74,10 +72,10 @@ const InventoryBox = ({}) => {
               sx={{ color: colors.grey[100] }}
               padding="3px 3px"
             >
-              57
+              7
             </Typography>
             <Typography variant="h4" sx={{ color: colors.greenAccent[500] }}>
-              Active order
+              Low Stock Items
             </Typography>
           </Box>
   

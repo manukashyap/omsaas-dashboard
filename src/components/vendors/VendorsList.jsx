@@ -2,20 +2,27 @@ import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataContacts } from "../../data/mockData";
-import { mockDataInvoices } from "../../data/mockData";
 import { useTheme } from "@mui/material";
 
-const PurchaseList = () => {
+const VendorsList = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   const columns = [
-    { field: "id", headerName: "ID", flex: 0.5 },
+    { field: "id", headerName: "Serial", flex: 0.5 },
+    { field: "vendorId", headerName: "Vendor ID" },
     {
       field: "name",
       headerName: "Name",
       flex: 1,
       cellClassName: "name-column--cell",
+    },
+    {
+      field: "age",
+      headerName: "Age",
+      type: "number",
+      headerAlign: "left",
+      align: "left",
     },
     {
       field: "phone",
@@ -28,18 +35,18 @@ const PurchaseList = () => {
       flex: 1,
     },
     {
-      field: "cost",
-      headerName: "Order Value",
+      field: "address",
+      headerName: "Address",
       flex: 1,
     },
     {
-      field: "timestamp",
-      headerName: "Order placed on",
+      field: "city",
+      headerName: "City",
       flex: 1,
     },
     {
-      field: "status",
-      headerName: "Order Status",
+      field: "zipCode",
+      headerName: "Zip Code",
       flex: 1,
     },
   ];
@@ -79,7 +86,7 @@ const PurchaseList = () => {
         }}
       >
         <DataGrid
-          rows={mockDataInvoices}
+          rows={mockDataContacts}
           columns={columns}
         />
       </Box>
@@ -87,4 +94,4 @@ const PurchaseList = () => {
   );
 };
 
-export default PurchaseList;
+export default VendorsList;

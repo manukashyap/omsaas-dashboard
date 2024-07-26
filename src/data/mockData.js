@@ -85,7 +85,7 @@ export const mockDataContacts = [
     address: "0912 Won Street, Alabama, SY 10001",
     city: "New York",
     zipCode: "10001",
-    registrarId: 123512,
+    vendorId: 123512,
   },
   {
     id: 2,
@@ -96,7 +96,7 @@ export const mockDataContacts = [
     address: "1234 Main Street, New York, NY 10001",
     city: "New York",
     zipCode: "13151",
-    registrarId: 123512,
+    vendorId: 123512,
   },
   {
     id: 3,
@@ -107,7 +107,7 @@ export const mockDataContacts = [
     address: "3333 Want Blvd, Estanza, NAY 42125",
     city: "New York",
     zipCode: "87281",
-    registrarId: 4132513,
+    vendorId: 4132513,
   },
   {
     id: 4,
@@ -118,7 +118,7 @@ export const mockDataContacts = [
     address: "1514 Main Street, New York, NY 22298",
     city: "New York",
     zipCode: "15551",
-    registrarId: 123512,
+    vendorId: 123512,
   },
   {
     id: 5,
@@ -129,7 +129,7 @@ export const mockDataContacts = [
     address: "11122 Welping Ave, Tenting, CD 21321",
     city: "Tenting",
     zipCode: "14215",
-    registrarId: 123512,
+    vendorId: 123512,
   },
   {
     id: 6,
@@ -140,7 +140,7 @@ export const mockDataContacts = [
     address: "1234 Canvile Street, Esvazark, NY 10001",
     city: "Esvazark",
     zipCode: "10001",
-    registrarId: 123512,
+    vendorId: 123512,
   },
   {
     id: 7,
@@ -151,7 +151,7 @@ export const mockDataContacts = [
     address: "22215 Super Street, Everting, ZO 515234",
     city: "Evertin",
     zipCode: "51523",
-    registrarId: 123512,
+    vendorId: 123512,
   },
   {
     id: 8,
@@ -162,7 +162,7 @@ export const mockDataContacts = [
     address: "4123 Ever Blvd, Wentington, AD 142213",
     city: "Esteras",
     zipCode: "44215",
-    registrarId: 512315,
+    vendorId: 512315,
   },
   {
     id: 9,
@@ -173,7 +173,7 @@ export const mockDataContacts = [
     address: "51234 Avery Street, Cantory, ND 212412",
     city: "Colunza",
     zipCode: "111234",
-    registrarId: 928397,
+    vendorId: 928397,
   },
   {
     id: 10,
@@ -184,7 +184,7 @@ export const mockDataContacts = [
     address: "4123 Easer Blvd, Wentington, AD 142213",
     city: "Esteras",
     zipCode: "44215",
-    registrarId: 533215,
+    vendorId: 533215,
   },
   {
     id: 11,
@@ -195,7 +195,7 @@ export const mockDataContacts = [
     address: "51234 Fiveton Street, CunFory, ND 212412",
     city: "Colunza",
     zipCode: "1234",
-    registrarId: 92197,
+    vendorId: 92197,
   },
 ];
 
@@ -204,123 +204,131 @@ export const mockDataInvoices = [
     id: 1,
     name: "Jon Snow",
     email: "jonsnow@gmail.com",
-    cost: "21.24",
+    cost: "₹100000",
     phone: "(665)121-5454",
-    timestamp: "03/12/2022",
+    timestamp: "03/07/2024",
+    status: "Order placed"
   },
   {
     id: 2,
     name: "Cersei Lannister",
     email: "cerseilannister@gmail.com",
-    cost: "1.24",
+    cost: "₹80000",
     phone: "(421)314-2288",
-    timestamp: "06/15/2021",
+    timestamp: "24/06/2024",
+    status: "Order placed"
   },
   {
     id: 3,
     name: "Jaime Lannister",
     email: "jaimelannister@gmail.com",
-    cost: "11.24",
+    cost: "₹50000",
     phone: "(422)982-6739",
-    timestamp: "05/02/2022",
+    timestamp: "21/06/2024",
+    status: "Order placed"
   },
   {
     id: 4,
     name: "Anya Stark",
     email: "anyastark@gmail.com",
-    cost: "80.55",
+    cost: "₹80000",
     phone: "(921)425-6742",
-    timestamp: "03/21/2022",
+    timestamp: "18/06/2024",
+    status: "Order placed"
   },
   {
     id: 5,
     name: "Daenerys Targaryen",
     email: "daenerystargaryen@gmail.com",
-    cost: "1.24",
+    cost: "₹100000",
     phone: "(421)445-1189",
-    timestamp: "01/12/2021",
+    timestamp: "01/06/2024",
+    status: "Order placed"
   },
   {
     id: 6,
     name: "Ever Melisandre",
     email: "evermelisandre@gmail.com",
-    cost: "63.12",
+    cost: "₹65000",
     phone: "(232)545-6483",
-    timestamp: "11/02/2022",
+    timestamp: "11/05/2024",
+    status: "Pending payment"
   },
   {
     id: 7,
     name: "Ferrara Clifford",
     email: "ferraraclifford@gmail.com",
-    cost: "52.42",
+    cost: "₹52000",
     phone: "(543)124-0123",
-    timestamp: "02/11/2022",
+    timestamp: "02/05/2024",
+    status: "Payment done"
   },
   {
     id: 8,
     name: "Rossini Frances",
     email: "rossinifrances@gmail.com",
-    cost: "21.24",
+    cost: "₹225000",
     phone: "(222)444-5555",
-    timestamp: "05/02/2021",
+    timestamp: "05/04/2024",
+    status: "Payment done"
   },
 ];
 
 export const mockTransactions = [
   {
     productId: "Surf Excel 100g",
-    storeId: "mini-mart-2",
-    timestamp: "2021-09-01 00:00",
-    cost: "43.95",
-    quantity: "40",
+    storeId: "Store 2",
+    timestamp: "12:56pm",
+    cost: "44",
+    quantity: "4",
   },
   {
     productId: "Mango Mallika",
-    storeId: "mini-mart-1",
-    timestamp: "2022-04-01 00:00",
-    cost: "133.45",
-    quantity: "10",
+    storeId: "Store 1",
+    timestamp: "12:55pm",
+    cost: "133",
+    quantity: "4",
   },
   {
     productId: "Banana Robusta",
-    storeId: "mini-mart-3",
-    timestamp: "2021-09-01 00:00",
-    cost: "43.95",
-    quantity: "85",
+    storeId: "Store 3",
+    timestamp: "12:45pm",
+    cost: "44",
+    quantity: "8",
   },
   {
     productId: "Green Chilli",
-    storeId: "warehouse-3",
-    timestamp: "2022-11-05 00:00",
-    cost: "200.95",
-    quantity: "70",
+    storeId: "Warehouse 3",
+    timestamp: "12:25pm",
+    cost: "2000",
+    quantity: "100",
   },
   {
     productId: "Colgate Toothpaste 100g",
     storeId: "vendor-purchase",
-    timestamp: "2022-11-02 00:00",
-    cost: "13.55",
-    quantity: "25",
+    timestamp: "12:11pm",
+    cost: "10000",
+    quantity: "250",
   },
   {
     productId: "Red Chilli Powder - Everest",
-    storeId: "warehouse-1",
-    timestamp: "2021-09-0 00:001",
-    cost: "43.95",
+    storeId: "Warehouse 1",
+    timestamp: "11:39am",
+    cost: "40000",
     quantity: "100",
   },
   {
     productId: "Cabbage - Organic",
-    storeId: "mini-mart-1",
-    timestamp: "2019-04-15 00:00",
+    storeId: "Store 1",
+    timestamp: "11:24am",
     cost: "24.20",
     quantity: "50",
   },
   {
     productId: "Basmati Rice",
-    storeId: "mini-mart-2",
-    timestamp: "2022-04-01 00:00",
-    cost: "133.45",
+    storeId: "Store 2",
+    timestamp: "11:06am",
+    cost: "500",
     quantity: "20",
   },
 ];
@@ -440,163 +448,163 @@ export const mockPieData = [
 
 export const mockLineData = [
   {
-    id: "japan",
+    id: "Juice",
     color: tokens("dark").greenAccent[500],
     data: [
       {
-        x: "plane",
+        x: "January",
         y: 101,
       },
       {
-        x: "helicopter",
+        x: "February",
         y: 75,
       },
       {
-        x: "boat",
+        x: "March",
         y: 36,
       },
       {
-        x: "train",
+        x: "April",
         y: 216,
       },
       {
-        x: "subway",
+        x: "May",
         y: 35,
       },
       {
-        x: "bus",
+        x: "June",
         y: 236,
       },
       {
-        x: "car",
+        x: "July",
         y: 88,
       },
       {
-        x: "moto",
+        x: "August",
         y: 232,
       },
       {
-        x: "bicycle",
+        x: "September",
         y: 281,
       },
       {
-        x: "horse",
+        x: "October",
         y: 1,
       },
       {
-        x: "skateboard",
+        x: "November",
         y: 35,
       },
       {
-        x: "others",
+        x: "December",
         y: 14,
       },
     ],
   },
   {
-    id: "france",
+    id: "Vegetables",
     color: tokens("dark").blueAccent[300],
     data: [
       {
-        x: "plane",
+        x: "January",
         y: 212,
       },
       {
-        x: "helicopter",
+        x: "February",
         y: 190,
       },
       {
-        x: "boat",
+        x: "March",
         y: 270,
       },
       {
-        x: "train",
+        x: "April",
         y: 9,
       },
       {
-        x: "subway",
+        x: "May",
         y: 75,
       },
       {
-        x: "bus",
+        x: "June",
         y: 175,
       },
       {
-        x: "car",
+        x: "July",
         y: 33,
       },
       {
-        x: "moto",
+        x: "August",
         y: 189,
       },
       {
-        x: "bicycle",
+        x: "September",
         y: 97,
       },
       {
-        x: "horse",
+        x: "October",
         y: 87,
       },
       {
-        x: "skateboard",
+        x: "November",
         y: 299,
       },
       {
-        x: "others",
+        x: "December",
         y: 251,
       },
     ],
   },
   {
-    id: "us",
+    id: "Fruits",
     color: tokens("dark").redAccent[200],
     data: [
       {
-        x: "plane",
+        x: "January",
         y: 191,
       },
       {
-        x: "helicopter",
+        x: "February",
         y: 136,
       },
       {
-        x: "boat",
+        x: "March",
         y: 91,
       },
       {
-        x: "train",
+        x: "April",
         y: 190,
       },
       {
-        x: "subway",
+        x: "May",
         y: 211,
       },
       {
-        x: "bus",
+        x: "June",
         y: 152,
       },
       {
-        x: "car",
+        x: "July",
         y: 189,
       },
       {
-        x: "moto",
+        x: "August",
         y: 152,
       },
       {
-        x: "bicycle",
+        x: "September",
         y: 8,
       },
       {
-        x: "horse",
+        x: "October",
         y: 197,
       },
       {
-        x: "skateboard",
+        x: "November",
         y: 107,
       },
       {
-        x: "others",
+        x: "December",
         y: 170,
       },
     ],
