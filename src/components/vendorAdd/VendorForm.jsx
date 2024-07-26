@@ -13,7 +13,7 @@ import LanguageIcon from '@mui/icons-material/Language';
 import { mockDataVendor } from "../../data/mockData";
 import Autocomplete from '@mui/material/Autocomplete';
 
-const PurchaseOrderForm = () => {
+const VendorForm = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
   const handleFormSubmit = (values) => {
@@ -47,40 +47,25 @@ const PurchaseOrderForm = () => {
                 "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
               }}
             >
-              <Autocomplete
-                disablePortal
-                id = "vendor_id"
-                name = "vendor_id"
-                options={mockDataVendor}
-                getOptionLabel={option => option.vendorName}
-                sx={{ gridColumn: "span 2" }}
-                onChange={(e, value) => {
-                  console.log(value);
-                  setFieldValue(
-                    "vendor_id",
-                    value !== null ? value : initialValues.vendorName
-                  );
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Vendor Name"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <DriveFileRenameOutlineIcon />
+                    </InputAdornment>
+                  )
                 }}
                 onBlur={handleBlur}
-                renderInput={(params) =>
-                  <TextField
-                    {...params}
-                    fullWidth
-                    variant="filled"
-                    type="text"
-                    label="Vendor Name"                  
-                    name="vendorName"
-                    /*InputProps={{
-                      ...params.InputProps,
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <DriveFileRenameOutlineIcon />
-                        </InputAdornment>
-                      )
-                    }}*/
-                    error={!!touched.vendorName && !!errors.vendorName}
-                    helperText={touched.vendorName && errors.vendorName}
-                  />}
+                onChange={handleChange}
+                value={values.vendorName}
+                name="vendorName"
+                error={!!touched.vendorName && !!errors.vendorName}
+                helperText={touched.vendorName && errors.vendorName}
+                sx={{ gridColumn: "span 2" }}
               />
               <TextField
                 fullWidth
@@ -225,7 +210,7 @@ const PurchaseOrderForm = () => {
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
               <Button type="submit" color="secondary" variant="contained">
-                Create Purchase Order
+                Add Vendor
               </Button>
             </Box>
           </form>
@@ -277,4 +262,4 @@ const initialValues = {
   website:""
 };
 
-export default PurchaseOrderForm;
+export default VendorForm;

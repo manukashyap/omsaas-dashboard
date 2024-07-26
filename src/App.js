@@ -12,6 +12,7 @@ import Inventory from "./scenes/inventory";
 import Sales from "./scenes/sales";
 import Tutorial from "./scenes/tutorial";
 import CreatePurchaseOrder from "./scenes/createPurchaseOrder";
+import VendorAdd from "./scenes/vendorAdd";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/purchase" element={<Purchase />} />
               <Route path="/purchaseCreate" element={<CreatePurchaseOrder />} />
+              <Route path="/vendorAdd" element={<VendorAdd />} />
               <Route path="/inventory" element={<Inventory />} />
               <Route path="/sales" element={<Sales />} />
               <Route path="/faq" element={<FAQ />} />

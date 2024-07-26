@@ -161,7 +161,7 @@ const Sidebar = () => {
             />
             <Item
               title="Action center"
-              to="/sales"
+              to="/actionCenter"
               icon={<PendingActionsIcon />}
               selected={selected}
               setSelected={setSelected}

@@ -1289,3 +1289,39 @@ export const mockGeographyData = [
     value: 171135,
   },
 ];
+
+export const mockDataVendor = [
+  {
+    id: 1,
+    vendorName: "Jon Snow",
+    email: "jonsnow@gmail.com",
+    contact: "(665)121-5454",
+    fax: "1234",
+    address1: "",
+    address2: "",
+    pincode: "123456",
+    website: "www.fruitloops.com"
+  },
+  {
+    id: 2,
+    vendorName: "Ravi Kumar",
+    email: "ravikumar@gmail.com",
+    contact: "(665)121-5454",
+    fax: "451621",
+    address1: "",
+    address2: "",
+    pincode: "456111",
+    website: "www.fruitcenter.com"
+  },
+  {
+    id: 3,
+    vendorName: "Manish Kumar",
+    email: "manishkumar@gmail.com",
+    contact: "(665)121-5454",
+    fax: "9999",
+    address1: "",
+    address2: "",
+    pincode: "987456",
+    website: "www.wowfruits.com"
+  }
+];
