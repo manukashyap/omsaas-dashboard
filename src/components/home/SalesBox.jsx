@@ -14,6 +14,7 @@ import InboxIcon from '@mui/icons-material/Inbox';
 import DraftsIcon from '@mui/icons-material/Drafts';
 import SellIcon from '@mui/icons-material/Sell';
 import BoxHeader from "./BoxHeader";
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 
 const SalesBox = ({}) => {
     const theme = useTheme();
@@ -24,7 +25,7 @@ const SalesBox = ({}) => {
         {/* Heading and icon box */}
         <BoxHeader
             icon={
-              <SellIcon
+              <ShoppingCartIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "40px" }}
               />
             }

@@ -13,6 +13,14 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import WarehouseIcon from '@mui/icons-material/Warehouse';
 import AssignmentIcon from "@mui/icons-material/Assignment";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import PendingActionsIcon from '@mui/icons-material/PendingActions';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import CastForEducationIcon from '@mui/icons-material/CastForEducation';
+import SubjectIcon from '@mui/icons-material/Subject';
+import KeyIcon from '@mui/icons-material/Key';
+import CircleIcon from '@mui/icons-material/Circle';
 import DensitySmallIcon from '@mui/icons-material/DensitySmall';
 
 
@@ -121,7 +129,7 @@ const Sidebar = () => {
                   OmSaaS Inc.
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  Inventory management system
+                  Order management system
                 </Typography>
               </Box>
             </Box>
@@ -136,9 +144,15 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-
+            <Item
+              title="Action center"
+              to="/sales"
+              icon={<PendingActionsIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
             <SubMenu
-            title="Purchase Orders"
+            title="Purchases"
             to="/"
             icon={<AssignmentIcon />}
             style={{
@@ -148,6 +162,7 @@ const Sidebar = () => {
             setSelected={setSelected}
             >
               <Item
+              title="View Purchase Order"
               width="100px"
                   height="100px"
               title="All Orders"
@@ -172,7 +187,14 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-
+            <Item
+              title="View Vendor"
+              to="/vendor"
+              display={selected === "Purchase Orders" ? "flex" : "none"} 
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
             </SubMenu>
             <SubMenu
             title="Inventory"
@@ -181,17 +203,52 @@ const Sidebar = () => {
             selected={selected}
             setSelected={setSelected}
             >
-              <Item
-              title="By Store"
-              to="/stores"
-              width="100%"
-                  height="100%"
+            <Item
+              title="Transfer Stock"
+              to="/internalOrder"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="By Product"
+              title="Adjust Stock"
+              to="/adjustInventory"
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="View Adjustment"
+              to="/adjustment"
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Add Store"
+              to="/storeCreate"
+              display={selected === "Purchase Orders" ? "flex" : "none"} 
+              <Item
+              title="By Store"
+              to="/stores"
+              width="100%"
+              height="100%"
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="View Store"
+              to="/storeCreate"
+              display={selected === "Purchase Orders" ? "flex" : "none"} 
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              to="/productCreate"
+              display={selected === "Purchase Orders" ? "flex" : "none"} 
+              title="Add Products"
               to="/productStock"
               display={selected === "Inventory" ? "flex" : "none"} 
               icon={<PeopleOutlinedIcon />}
@@ -199,7 +256,10 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
-              title="By Vendor"
+              title="View Product"
+              to="/product"
+              display={selected === "Purchase Orders" ? "flex" : "none"} 
+              title="Inventory"
               to="/inventoryTrack"
               display={selected === "Inventory" ? "flex" : "none"} 
               icon={<PeopleOutlinedIcon />}
@@ -208,7 +268,6 @@ const Sidebar = () => {
             />
 
             </SubMenu>
-
             <SubMenu
             title="Sales"
             to="/"
@@ -220,7 +279,17 @@ const Sidebar = () => {
               title="By Store"
               to="/storeSales"
               width="100%"
-                  height="100%"
+              height="100%"
+            <SubMenu
+            title="Sales"
+            to="/"
+            icon={<ShoppingCartIcon />}
+            selected={selected}
+            setSelected={setSelected}
+            >
+            <Item
+              title="Manage Promotion"
+              to="/promotion"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -230,6 +299,19 @@ const Sidebar = () => {
               to="/productSales"
               display={selected === "Inventory" ? "flex" : "none"} 
               icon={<PeopleOutlinedIcon />}
+              title="Manage Omnichannel"
+              to="/omnichannel"
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Create Customer"
+              to="/customerCreate"
+              icon={<PeopleOutlinedIcon />}
+              title="Sales"
+              to="/sales"
+              icon={<ReceiptOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
@@ -237,6 +319,52 @@ const Sidebar = () => {
               title="By Vendor"
               to="/vendorSales"
               display={selected === "Inventory" ? "flex" : "none"} 
+              title="View Customer"
+              to="/customer"
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            </SubMenu>
+            <SubMenu
+            title="Reports"
+            to="/"
+            icon={<AssessmentIcon />}
+            selected={selected}
+            setSelected={setSelected}
+            >
+            <Item
+              title="Dashboard"
+              to="/dashboard"
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Create Alert"
+              to="/alertCreate"
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            </SubMenu>
+            <SubMenu
+            title="Manage Access"
+            to="/"
+            icon={<KeyIcon />}
+            selected={selected}
+            setSelected={setSelected}
+            >
+            <Item
+              title="Add User"
+              to="/userCreate"
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="View User"
+              to="/user"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -252,14 +380,21 @@ const Sidebar = () => {
             <Item
               title="FAQ"
               to="/faq"
-              icon={<BarChartOutlinedIcon />}
+              icon={<ChatBubbleOutlineIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Tutorial"
               to="/tutorial"
-              icon={<MapOutlinedIcon />}
+              icon={<CastForEducationIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Documentation"
+              to="/document"
+              icon={<SubjectIcon />}
               selected={selected}
               setSelected={setSelected}
             />

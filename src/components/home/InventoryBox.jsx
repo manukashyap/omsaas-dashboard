@@ -14,6 +14,7 @@ import InboxIcon from '@mui/icons-material/Inbox';
 import DraftsIcon from '@mui/icons-material/Drafts';
 import WarehouseIcon from '@mui/icons-material/Warehouse';
 import BoxHeader from "./BoxHeader";
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 
 const InventoryBox = ({}) => {
     const theme = useTheme();

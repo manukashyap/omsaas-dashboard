@@ -15,6 +15,7 @@ import InboxIcon from "@mui/icons-material/Inbox";
 import DraftsIcon from "@mui/icons-material/Drafts";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import BoxHeader from "./BoxHeader";
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 
 const PurchaseBox = ({}) => {
   const theme = useTheme();
@@ -68,7 +69,7 @@ const PurchaseBox = ({}) => {
           width="100%"
           flexDirection="column"
           justifyContent="center"
-          padding="10px 40px"
+          padding="10px 10px"
         >
           <TagIcon sx={{ fontSize: 35 }} />
           <Typography
