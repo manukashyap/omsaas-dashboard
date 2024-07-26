@@ -162,7 +162,6 @@ const Sidebar = () => {
             setSelected={setSelected}
             >
               <Item
-              title="View Purchase Order"
               width="100px"
                   height="100px"
               title="All Orders"
@@ -182,14 +181,6 @@ const Sidebar = () => {
             <Item
               title="Vendors"
               to="/vendors"
-              display={selected === "Purchase Orders" ? "flex" : "none"} 
-              icon={<PeopleOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="View Vendor"
-              to="/vendor"
               display={selected === "Purchase Orders" ? "flex" : "none"} 
               icon={<PeopleOutlinedIcon />}
               selected={selected}
@@ -218,18 +209,8 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
-              title="View Adjustment"
-              to="/adjustment"
-              icon={<PeopleOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Add Store"
-              to="/storeCreate"
               display={selected === "Purchase Orders" ? "flex" : "none"} 
-              <Item
-              title="By Store"
+              title="Stores"
               to="/stores"
               width="100%"
               height="100%"
@@ -238,29 +219,8 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
-              title="View Store"
-              to="/storeCreate"
-              display={selected === "Purchase Orders" ? "flex" : "none"} 
-              icon={<PeopleOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              to="/productCreate"
-              display={selected === "Purchase Orders" ? "flex" : "none"} 
-              title="Add Products"
-              to="/productStock"
-              display={selected === "Inventory" ? "flex" : "none"} 
-              icon={<PeopleOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="View Product"
               to="/product"
-              display={selected === "Purchase Orders" ? "flex" : "none"} 
-              title="Inventory"
-              to="/inventoryTrack"
+              title="Products"
               display={selected === "Inventory" ? "flex" : "none"} 
               icon={<PeopleOutlinedIcon />}
               selected={selected}
@@ -276,50 +236,24 @@ const Sidebar = () => {
             setSelected={setSelected}
             >
               <Item
-              title="By Store"
-              to="/storeSales"
+              to="/sales"
               width="100%"
               height="100%"
-            <SubMenu
-            title="Sales"
-            to="/"
+            title="Sales Orders"
             icon={<ShoppingCartIcon />}
             selected={selected}
             setSelected={setSelected}
-            >
+            />
             <Item
-              title="Manage Promotion"
+              title="Promotions"
               to="/promotion"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="By Product"
-              to="/productSales"
-              display={selected === "Inventory" ? "flex" : "none"} 
-              icon={<PeopleOutlinedIcon />}
-              title="Manage Omnichannel"
-              to="/omnichannel"
-              icon={<PeopleOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Create Customer"
-              to="/customerCreate"
-              icon={<PeopleOutlinedIcon />}
-              title="Sales"
-              to="/sales"
-              icon={<ReceiptOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="By Vendor"
-              to="/vendorSales"
-              display={selected === "Inventory" ? "flex" : "none"} 
-              title="View Customer"
+              display={selected === "Sales" ? "flex" : "none"} 
+              title="Customers"
               to="/customer"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
