@@ -229,7 +229,7 @@ const Sidebar = () => {
               to="/storeCreate"
               display={selected === "Purchase Orders" ? "flex" : "none"} 
               <Item
-              title="Stores"
+              title="By Store"
               to="/stores"
               width="100%"
               height="100%"
@@ -246,10 +246,9 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
-              title="Add Product"
               to="/productCreate"
               display={selected === "Purchase Orders" ? "flex" : "none"} 
-              title="Products"
+              title="Add Products"
               to="/productStock"
               display={selected === "Inventory" ? "flex" : "none"} 
               icon={<PeopleOutlinedIcon />}
@@ -272,6 +271,18 @@ const Sidebar = () => {
             <SubMenu
             title="Sales"
             to="/"
+            icon={<ReceiptOutlinedIcon />}
+            selected={selected}
+            setSelected={setSelected}
+            >
+              <Item
+              title="By Store"
+              to="/storeSales"
+              width="100%"
+              height="100%"
+            <SubMenu
+            title="Sales"
+            to="/"
             icon={<ShoppingCartIcon />}
             selected={selected}
             setSelected={setSelected}
@@ -284,6 +295,10 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
+              title="By Product"
+              to="/productSales"
+              display={selected === "Inventory" ? "flex" : "none"} 
+              icon={<PeopleOutlinedIcon />}
               title="Manage Omnichannel"
               to="/omnichannel"
               icon={<PeopleOutlinedIcon />}
@@ -301,6 +316,9 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
+              title="By Vendor"
+              to="/vendorSales"
+              display={selected === "Inventory" ? "flex" : "none"} 
               title="View Customer"
               to="/customer"
               icon={<PeopleOutlinedIcon />}
@@ -352,7 +370,6 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             </SubMenu>
-
             <Typography
               variant="h6"
               color={colors.grey[300]}

@@ -2,6 +2,7 @@ import { Box, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import TagIcon from "@mui/icons-material/Tag";
 import Divider from "@mui/material/Divider";
 import List from '@mui/material/List';
@@ -54,10 +55,10 @@ const SalesBox = ({}) => {
               sx={{ color: colors.grey[100] }}
               padding="3px 3px"
             >
-              45,500
+              ₹ 85,500
             </Typography>
             <Typography variant="h4" sx={{ color: colors.greenAccent[500] }}>
-              Order Value
+              Daily Sales Value
             </Typography>
           </Box>
           <Divider orientation="vertical" variant="fullwidth" flexItem />
@@ -75,10 +76,10 @@ const SalesBox = ({}) => {
               sx={{ color: colors.grey[100] }}
               padding="3px 3px"
             >
-              57
+              79
             </Typography>
             <Typography variant="h4" sx={{ color: colors.greenAccent[500] }}>
-              Active order
+              Daily Sales #
             </Typography>
           </Box>
   

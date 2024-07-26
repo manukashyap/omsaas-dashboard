@@ -7,7 +7,7 @@ const Inventory = () => {
   const colors = tokens(theme.palette.mode);
   return (
     <Box m="20px">
-      <Header title="Inventory" subtitle="Inventory details page" />
+      <Header title="Inventory" subtitle="Inventory details" />
       
     </Box>
   );
