@@ -16,7 +16,7 @@ const Vendors = () => {
         <Header title="Vendors" subtitle="Vendor details page" />
 
         <Box>
-          <Link underline="none" to={"/purchaseOrderCreate"}>
+          <Link underline="none" to={"/vendorAdd"}>
             <Button
               sx={{
                 ":hover": {

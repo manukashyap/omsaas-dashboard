@@ -1297,3 +1297,168 @@ export const mockGeographyData = [
     value: 171135,
   },
 ];
+
+export const mockDataVendor = [
+  {
+    vendorId: 1,
+    vendorName: "Ashok Kumar",
+    email: "jonsnow@gmail.com",
+    contact: "(665)121-5454",
+    fax: "1234",
+    address1: "",
+    address2: "",
+    pincode: "123456",
+    website: "www.fruitloops.com",
+    productDetails:[
+        {
+          productId: 3,
+          buyPrice: 34,
+          unit: "Kg"
+        }
+      ]    
+  },
+  {
+    vendorId: 2,
+    vendorName: "Ravi Yadav",
+    email: "ravikumar@gmail.com",
+    contact: "(665)121-5454",
+    fax: "451621",
+    address1: "",
+    address2: "",
+    pincode: "456111",
+    website: "www.fruitcenter.com",
+    productDetails:
+      [
+        {
+          productId: 2,
+          buyPrice: 55,
+          unit: "Kg"
+        },
+        {
+          productId: 4,
+          buyPrice: 41,
+          unit: "Kg"
+        }
+      ]
+  },
+  {
+    vendorId: 3,
+    vendorName: "Manish Kumar",
+    email: "manishkumar@gmail.com",
+    contact: "(665)121-5454",
+    fax: "9999",
+    address1: "",
+    address2: "",
+    pincode: "987456",
+    website: "www.wowfruits.com",
+    productDetails:
+      [
+        {
+          productId: 1,
+          buyPrice: 23,
+          unit: "Kg"
+        },
+        {
+          productId: 3,
+          buyPrice: 37,
+          unit: "Kg"
+        }
+      ]
+  }
+];
+export const mockDataProduct = [
+  {
+    productId: 1,
+    productName: "Grapes",
+    productType: "Non-Stocked",
+    purchaseDetails:
+      [
+        {
+          vendorId: 3,
+          buyPrice: 23,
+          unit: "Kg"
+        }
+      ],
+    sellPrice: 29
+  },
+  {
+    productId: 2,
+    productName: "Mangoes",
+    productType: "Stocked",
+    purchaseDetails:
+      [
+        {
+          vendorId: 2,
+          buyPrice: 55,
+          unit: "Kg"
+        }
+      ],
+    sellPrice: 67
+  },
+  {
+    productId: 3,
+    productName: "Banana",
+    productType: "Serialized",
+    purchaseDetails:
+      [
+        {
+          vendorId: 1,
+          buyPrice: 34,
+          unit: "Kg"
+        },
+        {
+          vendorId: 3,
+          buyPrice: 37,
+          unit: "Kg"
+        }
+      ],
+    sellPrice: 41
+  },
+  {
+    productId: 4,
+    productName: "Strawberry",
+    productType: "Service",
+    purchaseDetails:
+      [
+        {
+          vendorId: 2,
+          buyPrice: 41,
+          unit: "Kg"
+        }
+      ],
+    sellPrice: 50
+  }
+];
+
+export const mockDataVendorProduct = [
+  {
+    vendorId: 1,
+    productId: 3,
+    buyPrice: 34,
+    unit: "Kg"
+  },
+  {
+    vendorId: 2,
+    productId: 2,
+    buyPrice: 55,
+    unit: "Kg"
+  },
+  {
+    vendorId: 2,
+    productId: 4,
+    buyPrice: 41,
+    unit: "Kg"
+  },
+  {
+    vendorId: 3,
+    productId: 1,
+    buyPrice: 23,
+    unit: "Kg"
+  },
+  {
+    vendorId: 3,
+    productId: 3,
+    buyPrice: 37,
+    unit: "Kg"
+  }
+];

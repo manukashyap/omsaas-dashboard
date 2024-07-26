@@ -10,10 +10,10 @@ import FaxIcon from '@mui/icons-material/Fax';
 import HomeIcon from '@mui/icons-material/Home';
 import PinDropIcon from '@mui/icons-material/PinDrop';
 import LanguageIcon from '@mui/icons-material/Language';
-import { mockDataVendor } from "../../data/mockData";
+import { mockDataProduct } from "../../data/mockData";
 import Autocomplete from '@mui/material/Autocomplete';
 
-const PurchaseOrderForm = () => {
+const VendorForm = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
   const handleFormSubmit = (values) => {
@@ -23,7 +23,7 @@ const PurchaseOrderForm = () => {
   return (
     <Box m="20px">
       {/*<Header title="Create Purchase Order" subtitle="Create a New User Profile" />*/}
-
+      <Header subtitle="Vendor Details" />
       <Formik
         onSubmit={handleFormSubmit}
         initialValues={initialValues}
@@ -47,40 +47,25 @@ const PurchaseOrderForm = () => {
                 "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
               }}
             >
-              <Autocomplete
-                disablePortal
-                /*id = "vendor_id"
-                name = "vendor_id"*/
-                options={mockDataVendor}
-                getOptionLabel={option => option.vendorName}
-                sx={{ gridColumn: "span 2" }}
-                onChange={(e, value) => {
-                  console.log(value);
-                  setFieldValue(
-                    /*"vendor_id",*/
-                    value !== null ? value : initialValues.vendorName
-                  );
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Vendor Name"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <DriveFileRenameOutlineIcon />
+                    </InputAdornment>
+                  )
                 }}
                 onBlur={handleBlur}
-                renderInput={(params) =>
-                  <TextField
-                    {...params}
-                    fullWidth
-                    variant="filled"
-                    type="text"
-                    label="Vendor Name"                  
-                    name="vendorName"
-                    /*InputProps={{
-                      ...params.InputProps,
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <DriveFileRenameOutlineIcon />
-                        </InputAdornment>
-                      )
-                    }}*/
-                    error={!!touched.vendorName && !!errors.vendorName}
-                    helperText={touched.vendorName && errors.vendorName}
-                  />}
+                onChange={handleChange}
+                value={values.vendorName}
+                name="vendorName"
+                error={!!touched.vendorName && !!errors.vendorName}
+                helperText={touched.vendorName && errors.vendorName}
+                sx={{ gridColumn: "span 2" }}
               />
               <TextField
                 fullWidth
@@ -222,10 +207,103 @@ const PurchaseOrderForm = () => {
                 helperText={touched.website && errors.website}
                 sx={{ gridColumn: "span 2" }}
               />
+              {/*<Header subtitle="Product Details" />*/}
+              <Autocomplete
+                disablePortal
+                options={mockDataProduct}
+                getOptionLabel={option => option.productName}
+                sx={{ gridColumn: "span 1" }}
+                onChange={(e, value) => {
+                  console.log(value);
+                  setFieldValue(
+                    value !== null ? value : initialValues.productName
+                  );
+                }}
+                onBlur={handleBlur}
+                renderInput={(params) =>
+                  <TextField
+                    {...params}
+                    fullWidth
+                    variant="filled"
+                    type="text"
+                    label="Product Name"                  
+                    name="productName"
+                    error={!!touched.productName && !!errors.productName}
+                    helperText={touched.productName && errors.productName}
+                  />}
+              />
+              <Autocomplete
+                disablePortal
+                options={mockDataProduct}
+                getOptionLabel={option => option.productType}
+                sx={{ gridColumn: "span 1" }}
+                onChange={(e, value) => {
+                  console.log(value);
+                  setFieldValue(
+                    value !== null ? value : initialValues.productType
+                  );
+                }}
+                onBlur={handleBlur}
+                renderInput={(params) =>
+                  <TextField
+                    {...params}
+                    fullWidth
+                    variant="filled"
+                    type="text"
+                    label="Product Type"                  
+                    name="productType"
+                    error={!!touched.productType && !!errors.productType}
+                    helperText={touched.productType && errors.productType}
+                  />}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Price"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <EmailIcon />
+                    </InputAdornment>
+                  )
+                }}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.email}
+                name="email"
+                error={!!touched.email && !!errors.email}
+                helperText={touched.email && errors.email}
+                sx={{ gridColumn: "span 1" }}
+              />
+              <Autocomplete
+                disablePortal
+                options={mockDataProduct}
+                getOptionLabel={option => option.productType}
+                sx={{ gridColumn: "span 1" }}
+                onChange={(e, value) => {
+                  console.log(value);
+                  setFieldValue(
+                    value !== null ? value : initialValues.productType
+                  );
+                }}
+                onBlur={handleBlur}
+                renderInput={(params) =>
+                  <TextField
+                    {...params}
+                    fullWidth
+                    variant="filled"
+                    type="text"
+                    label="Product Type"                  
+                    name="productType"
+                    error={!!touched.productType && !!errors.productType}
+                    helperText={touched.productType && errors.productType}
+                  />}
+              />
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
               <Button type="submit" color="secondary" variant="contained">
-                Create Purchase Order
+                Add Vendor
               </Button>
             </Box>
           </form>
@@ -277,4 +355,4 @@ const initialValues = {
   website:""
 };
 
-export default PurchaseOrderForm;
+export default VendorForm;
