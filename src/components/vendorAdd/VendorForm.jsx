@@ -18,6 +18,7 @@ const VendorForm = () => {
     email: "",
     phoneNumber: "",
     address: "",
+    pin: ""
   });
 
   const handleChange = (e) => {
@@ -28,15 +29,14 @@ const VendorForm = () => {
     }));
   };
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
+  const handleFormSubmit = async (values) => {
     try {
       const response = await fetch("http://localhost:8080/v1/vendor", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(vendor),
+        body: JSON.stringify(values),
       });
       if (response.ok) {
         alert("Vendor added successfully");
@@ -55,17 +55,16 @@ const VendorForm = () => {
       <Header subtitle="Vendor Details" />
       <Formik
         onSubmit={handleFormSubmit}
-        initialValues={initialValues}
+        initialValues={vendor}
         validationSchema={checkoutSchema}
       >
         {({
-          vendor,
+          values,
           errors,
           touched,
           handleBlur,
           handleChange,
           handleSubmit,
-          setFieldValue,
         }) => (
           <form onSubmit={handleSubmit}>
             <Box
@@ -90,8 +89,8 @@ const VendorForm = () => {
                 }}
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={vendor.name}
-                name="vendorName"
+                value={values.name}
+                name="name"
                 error={!!touched.name && !!errors.name}
                 helperText={touched.name && errors.name}
                 sx={{ gridColumn: "span 4" }}
@@ -110,7 +109,7 @@ const VendorForm = () => {
                 }}
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={vendor.email}
+                value={values.email}
                 name="email"
                 error={!!touched.email && !!errors.email}
                 helperText={touched.email && errors.email}
@@ -130,8 +129,8 @@ const VendorForm = () => {
                 }}
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={vendor.phoneNumber}
-                name="contact"
+                value={values.phoneNumber}
+                name="phoneNumber"
                 error={!!touched.phoneNumber && !!errors.phoneNumber}
                 helperText={touched.phoneNumber && errors.phoneNumber}
                 sx={{ gridColumn: "span 2" }}
@@ -150,7 +149,7 @@ const VendorForm = () => {
                 }}
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={vendor.address}
+                value={values.address}
                 name="address"
                 error={!!touched.address && !!errors.address}
                 helperText={touched.address && errors.address}
@@ -170,7 +169,7 @@ const VendorForm = () => {
                 }}
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={vendor.pin}
+                value={values.pin}
                 name="pin"
                 error={!!touched.pin && !!errors.pin}
                 helperText={touched.pin && errors.pin}
@@ -194,27 +193,24 @@ const phoneRegExp =
 
 const pinRegExp = /^(\d{4}|\d{6})$/;
 
-const websiteRegExp =
-  /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/;
-
 const checkoutSchema = yup.object().shape({
-  vendorName: yup.string().required("required"),
+  name: yup.string().required("required"),
   email: yup.string().email("Invalid Email").required("required"),
-  contact: yup
+  phoneNumber: yup
     .string()
     .matches(phoneRegExp, "Phone number is not valid")
     .required("required"),
-  address1: yup.string().required("required"),
-  address2: yup.string().required("required"),
+  address: yup.string().required("required"),
   pin: yup
     .string()
     .matches(pinRegExp, "Pincode is not valid")
     .required("required"),
 });
+
 const initialValues = {
-  vendorName: "",
+  name: "",
   email: "",
-  phoneNum: "",
+  phoneNumber: "",
   address: "",
   pin: "",
 };
