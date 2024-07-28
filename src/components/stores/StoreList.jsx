@@ -13,7 +13,6 @@ const StoreList = () => {
     { field: "id", headerName: "Store ID", flex: 0.5 },
     {
       field: "storeName",
-      //<Link underline="none" to={"/purchaseOrderCreate"}>
       headerName: "Store Name",
       flex: 1,
       cellClassName: "name-column--cell",

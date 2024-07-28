@@ -1481,3 +1481,82 @@ export const mockDataStoreList = [
     storeOperationalStatus: "True"
   }
 ];
+
+export const mockDataStoreDetails = [
+	{
+	  storeId: 1,
+	  storeName: "Eastern Warehouse",
+	  timezone: "IST",
+	  storeStartTime: "09:00",
+	  storeEndtime: "21:00",
+	  storeOperationalStatus: "True",
+	  storeCalendar:
+	    {
+	      Monday: "True",
+	      Tuesday: "True",
+	      Wednesday: "True",
+	      Thrusday: "True",
+	      Friday: "True",
+	      Saturday: "True",
+	      Sunday: "False",
+	    },
+	  storeCapacity:
+	    {
+	      StoreManagerId: 1,
+	      StoreManagerName: "Manoj Tiwari",
+	      fte: 2
+	    },
+	  storeType:
+	    {
+	      Inflow:
+	        {
+	          purchaseOrder: "True",
+	          stockTransfer: "True"
+	        },
+	      Outflow:
+	        {
+	          stockTransfer: "True",
+	          salvage: "True",
+	          sales: "False"
+	        }
+	    }
+	},
+	{
+	  storeId: 2,
+	  storeName: "MJ Road Store",
+	  timezone: "IST",
+	  storeStartTime: "09:00",
+	  storeEndtime: "21:00",
+	  storeOperationalStatus: "True",
+	  storeCalendar:
+	    {
+	      Monday: "True",
+	      Tuesday: "True",
+	      Wednesday: "True",
+	      Thrusday: "True",
+	      Friday: "True",
+	      Saturday: "True",
+	      Sunday: "True",
+	    },
+	  storeCapacity:
+	    {
+	      StoreManagerId: 2,
+	      StoreManagerName: "Naman Shah",
+	      fte: 2
+	    },
+	  storeType:
+	    {
+	      Inflow:
+	        {
+	          purchaseOrder: "False",
+	          stockTransfer: "True"
+	        },
+	      Outflow:
+	        {
+	          stockTransfer: "True",
+	          salvage: "True",
+	          sales: "True"
+	        }
+	    }
+	}
+];  
