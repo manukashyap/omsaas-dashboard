@@ -53,7 +53,7 @@ const PurchaseBox = ({}) => {
             sx={{ color: colors.grey[100] }}
             padding="3px 3px"
           >
-            ₹ 4,10,000
+            4,10,000
           </Typography>
           <Typography variant="h4" sx={{ color: colors.greenAccent[500] }}>
             Pending Order Value

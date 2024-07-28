@@ -15,6 +15,7 @@ import PurchaseOrder from "./scenes/purchase_order";
 import Pending from "./scenes/pending";
 import Vendors from "./scenes/vendors";
 import VendorAdd2 from "./scenes/vendorAdd";
+import AllStores from "./scenes/allStores";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
               <Route path="/vendors" element={<Vendors />} />
               <Route path="/purchaseOrderCreate" element={<PurchaseOrder />} />
               <Route path="/vendorAdd" element={<VendorAdd2 />} />
+              <Route path="/stores" element={<AllStores />} />
               <Route path="/inventory" element={<Inventory />} />
               <Route path="/sales" element={<Sales />} />
               <Route path="/faq" element={<FAQ />} />

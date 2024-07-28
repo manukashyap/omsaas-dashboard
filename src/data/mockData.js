@@ -1462,3 +1462,22 @@ export const mockDataVendorProduct = [
     unit: "Kg"
   }
 ];
+
+export const mockDataStoreList = [
+  {
+    id: 1,
+    storeName: "Eastern Warehouse",
+    storeStartTime: "09:00",
+    storeEndTime: "18:00",
+    timezone: "IST",
+    storeOperationalStatus: "True"
+  },
+  {
+    id: 2,
+    storeName: "MJ Road Store",
+    storeStartTime: "09:00",
+    storeEndTime: "21:00",
+    timezone: "IST",
+    storeOperationalStatus: "True"
+  }
+];
