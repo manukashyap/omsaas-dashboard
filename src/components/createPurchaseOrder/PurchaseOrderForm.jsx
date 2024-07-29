@@ -3,8 +3,6 @@ import {
   Box,
   Button,
   TextField,
-  InputAdornment,
-  MenuItem,
   Typography,
   Card,
   CardContent,
@@ -12,17 +10,9 @@ import {
 import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import Header from "../Header";
-import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
-import EmailIcon from "@mui/icons-material/Email";
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
-import FaxIcon from "@mui/icons-material/Fax";
-import HomeIcon from "@mui/icons-material/Home";
-import PinDropIcon from "@mui/icons-material/PinDrop";
-import LanguageIcon from "@mui/icons-material/Language";
-import { mockDataVendor } from "../../data/mockData";
 import Autocomplete from "@mui/material/Autocomplete";
 import ProductForm from "../purchase/ProductForm";
+import Header from "../Header";
 
 const mockVendors = [
   {
@@ -71,7 +61,6 @@ const PurchaseOrderForm = () => {
 
   return (
     <Box m="20px">
-      <Header subtitle="Create Purchase Order" />
       <Formik
         onSubmit={handleFormSubmit}
         initialValues={initialValues}
@@ -118,25 +107,30 @@ const PurchaseOrderForm = () => {
                 )}
               />
               {selectedVendor && (
-                <Card sx={{ mt: 4 }}>
-                  <CardContent>
-                    <Typography variant="h5">
-                      {selectedVendor.vendorName}
-                    </Typography>
-                    <Typography variant="body1">
-                      Email: {selectedVendor.email}
-                    </Typography>
-                    <Typography variant="body1">
-                      Phone: {selectedVendor.phoneNumber}
-                    </Typography>
-                    <Typography variant="body1">
-                      Address: {selectedVendor.address}
-                    </Typography>
-                    <Typography variant="body1">
-                      Pin: {selectedVendor.pin}
-                    </Typography>
-                  </CardContent>
-                </Card>
+                <Box>
+                  <Typography variant="h4" gutterBottom>
+                    Selected Vendor Details
+                  </Typography>
+                  <Card sx={{ mt: 4, mb: 4 }}>
+                    <CardContent>
+                      <Typography variant="h5">
+                        {selectedVendor.vendorName}
+                      </Typography>
+                      <Typography variant="body1">
+                        Email: {selectedVendor.email}
+                      </Typography>
+                      <Typography variant="body1">
+                        Phone: {selectedVendor.phoneNumber}
+                      </Typography>
+                      <Typography variant="body1">
+                        Address: {selectedVendor.address}
+                      </Typography>
+                      <Typography variant="body1">
+                        Pin: {selectedVendor.pin}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Box>
               )}
             </Box>
             <ProductForm/>

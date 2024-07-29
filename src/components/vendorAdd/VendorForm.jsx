@@ -51,7 +51,6 @@ const VendorForm = () => {
 
   return (
     <Box m="20px">
-      {/*<Header title="Create Purchase Order" subtitle="Create a New User Profile" />*/}
       <Header subtitle="Vendor Details" />
       <Formik
         onSubmit={handleFormSubmit}
