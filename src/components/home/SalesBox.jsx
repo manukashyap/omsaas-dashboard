@@ -52,7 +52,7 @@ const SalesBox = ({}) => {
               sx={{ color: colors.grey[100] }}
               padding="3px 3px"
             >
-              ₹ 85,500
+              85,500
             </Typography>
             <Typography variant="h4" sx={{ color: colors.greenAccent[500] }}>
               Daily Sales Value
