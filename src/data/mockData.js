@@ -1495,16 +1495,10 @@ export const mockDataStoreDetails = [
 	      Monday: "True",
 	      Tuesday: "True",
 	      Wednesday: "True",
-	      Thrusday: "True",
+	      Thursday: "True",
 	      Friday: "True",
 	      Saturday: "True",
 	      Sunday: "False",
-	    },
-	  storeCapacity:
-	    {
-	      StoreManagerId: 1,
-	      StoreManagerName: "Manoj Tiwari",
-	      fte: 2
 	    },
 	  storeType:
 	    {
@@ -1533,16 +1527,10 @@ export const mockDataStoreDetails = [
 	      Monday: "True",
 	      Tuesday: "True",
 	      Wednesday: "True",
-	      Thrusday: "True",
+	      Thursday: "True",
 	      Friday: "True",
 	      Saturday: "True",
 	      Sunday: "True",
-	    },
-	  storeCapacity:
-	    {
-	      StoreManagerId: 2,
-	      StoreManagerName: "Naman Shah",
-	      fte: 2
 	    },
 	  storeType:
 	    {

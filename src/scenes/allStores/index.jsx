@@ -13,7 +13,7 @@ const AllStores = () => {
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Header title="Inventory" subtitle="Store Details" />
         <Box>
-          <Link underline="none" to={"/purchaseOrderCreate"}>
+          <Link underline="none" to={"/createNewStore"}>
             <Button
               sx={{
                 ":hover": {

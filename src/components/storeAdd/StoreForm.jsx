@@ -1,14 +1,14 @@
+import { Box, Button, TextField, InputAdornment, MenuItem, Typography, Tabs, Tab, useTheme } from "@mui/material";
 import React, { useState } from "react";
-import { useParams, useNavigate } from 'react-router-dom';
-import { mockDataStoreDetails } from '../../data/mockData';
-import { Box, Typography, TextField, Button, InputAdornment, MenuItem, Tabs, Tab, useTheme } from '@mui/material';
-import { Formik, Form, Field } from 'formik';
-import * as Yup from 'yup';
+import { Formik, Field } from "formik";
+import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import LanguageIcon from '@mui/icons-material/Language';
-import SettingsIcon from '@mui/icons-material/Settings';
-import TimerOffIcon from '@mui/icons-material/TimerOff';
+import Header from "../Header";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import TimerOffIcon from "@mui/icons-material/TimerOff";
+import LanguageIcon from "@mui/icons-material/Language";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import StoreIcon from "@mui/icons-material/Store";
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import RestoreIcon from '@mui/icons-material/Restore';
@@ -36,73 +36,61 @@ const operationalStatuses = ["True", "False"];
 // Days of the week
 const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-const StoreDetails = () => {
+const StoreForm = () => {
   const theme = useTheme();
   const isNonMobile = useMediaQuery("(min-width:600px)");
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const store = mockDataStoreDetails.find((store) => store.storeId === parseInt(id));
-
   const [selectedTab, setSelectedTab] = useState(0);
 
-  if (!store) {
-    return <Typography variant="h4">Store not found</Typography>;
-  }
-
-  const initialValues = {
-    storeName: store.storeName,
-    storeStartTime: store.storeStartTime,
-    storeEndTime: store.storeEndtime,
-    timezone: store.timezone,
-    storeOperationalStatus: store.storeOperationalStatus,
-    storeCalendar: store.storeCalendar,
-    storeType: store.storeType,
-  };
-
-  const validationSchema = Yup.object({
-    storeName: Yup.string().required('Required'),
-    storeStartTime: Yup.string().required('Required'),
-    storeEndTime: Yup.string().required('Required'),
-    timezone: Yup.string().required('Required'),
-    storeOperationalStatus: Yup.string().required('Required'),
-    storeCalendar: Yup.object().shape({
-      Monday: Yup.string().required('Required'),
-      Tuesday: Yup.string().required('Required'),
-      Wednesday: Yup.string().required('Required'),
-      Thursday: Yup.string().required('Required'),
-      Friday: Yup.string().required('Required'),
-      Saturday: Yup.string().required('Required'),
-      Sunday: Yup.string().required('Required'),
-    }),
-    storeType: Yup.object().shape({
-      Inflow: Yup.object().shape({
-        purchaseOrder: Yup.string().required('Required'),
-        stockTransfer: Yup.string().required('Required'),
-      }),
-      Outflow: Yup.object().shape({
-        stockTransfer: Yup.string().required('Required'),
-        salvage: Yup.string().required('Required'),
-        sales: Yup.string().required('Required'),
-      }),
-    }),
+  const [store, setStore] = useState({
+    storeName: "",
+    storeStartTime: "",
+    storeEndTime: "",
+    timezone: "",
+    storeOperationalStatus: "",
+    storeCalendar: {
+      Monday: "",
+      Tuesday: "",
+      Wednesday: "",
+      Thursday: "",
+      Friday: "",
+      Saturday: "",
+      Sunday: ""
+    },
+    inflow: {
+      purchaseOrder: "",
+      stockTransfer: ""
+    },
+    outflow: {
+      stockTransfer: "",
+      salvage: "",
+      sales: ""
+    }
   });
 
-  const handleSave = (values) => {
-    // Handle save logic here, e.g., update the data source or make an API call
-    console.log('Updated store data:', values);
-    alert('Store details saved successfully!');
-  };
-
-  const handleDelete = () => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this store?");
-    if (confirmDelete) {
-      const updatedStoreList = [...mockDataStoreDetails];
-      const index = updatedStoreList.findIndex((store) => store.storeId === parseInt(id));
-      if (index !== -1) {
-        updatedStoreList.splice(index, 1);
-        alert('Store deleted successfully!');
-        navigate('/stores');
-      }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (daysOfWeek.includes(name)) {
+      setStore((prevStore) => ({
+        ...prevStore,
+        storeCalendar: {
+          ...prevStore.storeCalendar,
+          [name]: value
+        }
+      }));
+    } else if (["purchaseOrder", "stockTransfer", "salvage", "sales"].includes(name)) {
+      const tab = selectedTab === 0 ? "inflow" : "outflow";
+      setStore((prevStore) => ({
+        ...prevStore,
+        [tab]: {
+          ...prevStore[tab],
+          [name]: value
+        }
+      }));
+    } else {
+      setStore((prevStore) => ({
+        ...prevStore,
+        [name]: value,
+      }));
     }
   };
 
@@ -110,21 +98,43 @@ const StoreDetails = () => {
     setSelectedTab(newValue);
   };
 
+  const handleFormSubmit = async (values) => {
+    try {
+      const response = await fetch("http://localhost:8080/v1/store", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+      if (response.ok) {
+        alert("Store added successfully");
+      } else {
+        alert("Failed to add store");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred");
+    }
+  };
+
   return (
     <Box m="20px">
-      <Typography variant="h4" gutterBottom>
-        {store.storeName} Details
-      </Typography>
-      <Typography variant="body1">
-        <strong>Store ID:</strong> {store.storeId}
-      </Typography>
+      <Header subtitle="Basic Details" />
       <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={handleSave}
+        onSubmit={handleFormSubmit}
+        initialValues={store}
+        validationSchema={checkoutSchema}
       >
-        {({ values, errors, touched, handleBlur, handleChange }) => (
-          <Form>
+        {({
+          values,
+          errors,
+          touched,
+          handleBlur,
+          handleChange,
+          handleSubmit,
+        }) => (
+          <form onSubmit={handleSubmit}>
             <Box
               display="grid"
               gap="30px"
@@ -133,13 +143,31 @@ const StoreDetails = () => {
                 "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
               }}
             >
-              <Field
-                as={TextField}
-                name="storeStartTime"
-                label="Start Time"
-                type="time"
+              <TextField
                 fullWidth
                 variant="filled"
+                type="text"
+                label="Store Name"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <StoreIcon />
+                    </InputAdornment>
+                  ),
+                }}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.storeName}
+                name="storeName"
+                error={!!touched.storeName && !!errors.storeName}
+                helperText={touched.storeName && errors.storeName}
+                sx={{ gridColumn: "span 4" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="time"
+                label="Start Time"
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -147,18 +175,19 @@ const StoreDetails = () => {
                     </InputAdornment>
                   ),
                 }}
-                error={touched.storeStartTime && !!errors.storeStartTime}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.storeStartTime}
+                name="storeStartTime"
+                error={!!touched.storeStartTime && !!errors.storeStartTime}
                 helperText={touched.storeStartTime && errors.storeStartTime}
-                margin="normal"
                 sx={{ gridColumn: "span 2" }}
               />
-              <Field
-                as={TextField}
-                name="storeEndTime"
-                label="End Time"
-                type="time"
+              <TextField
                 fullWidth
                 variant="filled"
+                type="time"
+                label="End Time"
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -166,18 +195,19 @@ const StoreDetails = () => {
                     </InputAdornment>
                   ),
                 }}
-                error={touched.storeEndTime && !!errors.storeEndTime}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.storeEndTime}
+                name="storeEndTime"
+                error={!!touched.storeEndTime && !!errors.storeEndTime}
                 helperText={touched.storeEndTime && errors.storeEndTime}
-                margin="normal"
                 sx={{ gridColumn: "span 2" }}
               />
-              <Field
-                as={TextField}
-                name="timezone"
-                label="Timezone"
+              <TextField
                 fullWidth
                 variant="filled"
                 select
+                label="Timezone"
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -185,10 +215,12 @@ const StoreDetails = () => {
                     </InputAdornment>
                   ),
                 }}
+                onBlur={handleBlur}
                 onChange={handleChange}
-                error={touched.timezone && !!errors.timezone}
+                value={values.timezone}
+                name="timezone"
+                error={!!touched.timezone && !!errors.timezone}
                 helperText={touched.timezone && errors.timezone}
-                margin="normal"
                 sx={{ gridColumn: "span 2" }}
               >
                 {timezones.map((timezone) => (
@@ -196,25 +228,25 @@ const StoreDetails = () => {
                     {timezone}
                   </MenuItem>
                 ))}
-              </Field>
-              <Field
-                as={TextField}
-                name="storeOperationalStatus"
-                label="Operational Status"
+              </TextField>
+              <TextField
                 fullWidth
                 variant="filled"
                 select
+                label="Operational Status"
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <SettingsIcon />
+                      <CheckCircleOutlineIcon />
                     </InputAdornment>
                   ),
                 }}
+                onBlur={handleBlur}
                 onChange={handleChange}
-                error={touched.storeOperationalStatus && !!errors.storeOperationalStatus}
+                value={values.storeOperationalStatus}
+                name="storeOperationalStatus"
+                error={!!touched.storeOperationalStatus && !!errors.storeOperationalStatus}
                 helperText={touched.storeOperationalStatus && errors.storeOperationalStatus}
-                margin="normal"
                 sx={{ gridColumn: "span 2" }}
               >
                 {operationalStatuses.map((status) => (
@@ -222,10 +254,10 @@ const StoreDetails = () => {
                     {status}
                   </MenuItem>
                 ))}
-              </Field>
+              </TextField>
             </Box>
             <Box mt="20px">
-              <Typography variant="h6">Store Calendar</Typography>
+              <Header subtitle="Store Calendar" />
               <Box display="grid" gridTemplateColumns="repeat(7, 1fr)" gap="10px" mt="10px">
                 {daysOfWeek.map((day) => (
                   <Field
@@ -239,7 +271,7 @@ const StoreDetails = () => {
                     value={values.storeCalendar[day]}
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    error={touched.storeCalendar?.[day] && !!errors.storeCalendar?.[day]}
+                    error={!!touched.storeCalendar?.[day] && !!errors.storeCalendar?.[day]}
                     helperText={touched.storeCalendar?.[day] && errors.storeCalendar?.[day]}
                   >
                     {operationalStatuses.map((status) => (
@@ -252,7 +284,7 @@ const StoreDetails = () => {
               </Box>
             </Box>
             <Box mt="20px">
-              <Typography variant="h6">Store Configuration</Typography>
+              <Header subtitle="Store Configuration" />
               <Tabs
                 value={selectedTab}
                 onChange={handleTabChange}
@@ -284,12 +316,12 @@ const StoreDetails = () => {
                       variant="filled"
                       select
                       label="Purchase Order"
-                      name="storeType.Inflow.purchaseOrder"
-                      value={values.storeType.Inflow.purchaseOrder}
+                      name="inflow.purchaseOrder"
+                      value={values.inflow.purchaseOrder}
                       onBlur={handleBlur}
                       onChange={handleChange}
-                      error={!!touched.storeType?.Inflow?.purchaseOrder && !!errors.storeType?.Inflow?.purchaseOrder}
-                      helperText={touched.storeType?.Inflow?.purchaseOrder && errors.storeType?.Inflow?.purchaseOrder}
+                      error={!!touched.inflow?.purchaseOrder && !!errors.inflow?.purchaseOrder}
+                      helperText={touched.inflow?.purchaseOrder && errors.inflow?.purchaseOrder}
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position="start">
@@ -310,12 +342,12 @@ const StoreDetails = () => {
                       variant="filled"
                       select
                       label="Stock Transfer"
-                      name="storeType.Inflow.stockTransfer"
-                      value={values.storeType.Inflow.stockTransfer}
+                      name="inflow.stockTransfer"
+                      value={values.inflow.stockTransfer}
                       onBlur={handleBlur}
                       onChange={handleChange}
-                      error={!!touched.storeType?.Inflow?.stockTransfer && !!errors.storeType?.Inflow?.stockTransfer}
-                      helperText={touched.storeType?.Inflow?.stockTransfer && errors.storeType?.Inflow?.stockTransfer}
+                      error={!!touched.inflow?.stockTransfer && !!errors.inflow?.stockTransfer}
+                      helperText={touched.inflow?.stockTransfer && errors.inflow?.stockTransfer}
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position="start">
@@ -340,12 +372,12 @@ const StoreDetails = () => {
                       variant="filled"
                       select
                       label="Stock Transfer"
-                      name="storeType.Outflow.stockTransfer"
-                      value={values.storeType.Outflow.stockTransfer}
+                      name="outflow.stockTransfer"
+                      value={values.outflow.stockTransfer}
                       onBlur={handleBlur}
                       onChange={handleChange}
-                      error={!!touched.storeType?.Outflow?.stockTransfer && !!errors.storeType?.Outflow?.stockTransfer}
-                      helperText={touched.storeType?.Outflow?.stockTransfer && errors.storeType?.Outflow?.stockTransfer}
+                      error={!!touched.outflow?.stockTransfer && !!errors.outflow?.stockTransfer}
+                      helperText={touched.outflow?.stockTransfer && errors.outflow?.stockTransfer}
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position="start">
@@ -366,12 +398,12 @@ const StoreDetails = () => {
                       variant="filled"
                       select
                       label="Salvage"
-                      name="storeType.Outflow.salvage"
-                      value={values.storeType.Outflow.salvage}
+                      name="outflow.salvage"
+                      value={values.outflow.salvage}
                       onBlur={handleBlur}
                       onChange={handleChange}
-                      error={!!touched.storeType?.Outflow?.salvage && !!errors.storeType?.Outflow?.salvage}
-                      helperText={touched.storeType?.Outflow?.salvage && errors.storeType?.Outflow?.salvage}
+                      error={!!touched.outflow?.salvage && !!errors.outflow?.salvage}
+                      helperText={touched.outflow?.salvage && errors.outflow?.salvage}
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position="start">
@@ -392,12 +424,12 @@ const StoreDetails = () => {
                       variant="filled"
                       select
                       label="Sales"
-                      name="storeType.Outflow.sales"
-                      value={values.storeType.Outflow.sales}
+                      name="outflow.sales"
+                      value={values.outflow.sales}
                       onBlur={handleBlur}
                       onChange={handleChange}
-                      error={!!touched.storeType?.Outflow?.sales && !!errors.storeType?.Outflow?.sales}
-                      helperText={touched.storeType?.Outflow?.sales && errors.storeType?.Outflow?.sales}
+                      error={!!touched.outflow?.sales && !!errors.outflow?.sales}
+                      helperText={touched.outflow?.sales && errors.outflow?.sales}
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position="start">
@@ -416,19 +448,42 @@ const StoreDetails = () => {
                 )}
               </Box>
             </Box>
-            <Box display="flex" justifyContent="space-between" mt={2}>
-              <Button variant="contained" color="secondary" type="submit">
-                Save
-              </Button>
-              <Button variant="contained" color="secondary" onClick={handleDelete}>
-                Delete
+            <Box display="flex" justifyContent="end" mt="20px">
+              <Button type="submit" color="secondary" variant="contained">
+                Add New Store
               </Button>
             </Box>
-          </Form>
+          </form>
         )}
       </Formik>
     </Box>
   );
 };
 
-export default StoreDetails;
+const checkoutSchema = yup.object().shape({
+  storeName: yup.string().required("required"),
+  storeStartTime: yup.string().required("required"),
+  storeEndTime: yup.string().required("required"),
+  timezone: yup.string().required("required"),
+  storeOperationalStatus: yup.string().required("required"),
+  storeCalendar: yup.object().shape({
+    Monday: yup.string().required("required"),
+    Tuesday: yup.string().required("required"),
+    Wednesday: yup.string().required("required"),
+    Thursday: yup.string().required("required"),
+    Friday: yup.string().required("required"),
+    Saturday: yup.string().required("required"),
+    Sunday: yup.string().required("required")
+  }),
+  inflow: yup.object().shape({
+    purchaseOrder: yup.string().required("required"),
+    stockTransfer: yup.string().required("required")
+  }),
+  outflow: yup.object().shape({
+    stockTransfer: yup.string().required("required"),
+    salvage: yup.string().required("required"),
+    sales: yup.string().required("required")
+  })
+});
+
+export default StoreForm;
