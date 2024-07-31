@@ -13,6 +13,8 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import RestoreIcon from '@mui/icons-material/Restore';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
+import Header from "../../components/Header";
 
 // List of timezones
 const timezones = [
@@ -125,107 +127,128 @@ const StoreDetails = () => {
       >
         {({ values, errors, touched, handleBlur, handleChange }) => (
           <Form>
-            <Box
-              display="grid"
-              gap="30px"
-              gridTemplateColumns="repeat(4, minmax(0, 1fr))"
-              sx={{
-                "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
-              }}
-            >
-              <Field
-                as={TextField}
-                name="storeStartTime"
-                label="Start Time"
-                type="time"
-                fullWidth
-                variant="filled"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <AccessTimeIcon />
-                    </InputAdornment>
-                  ),
+            <Box mt="20px">
+              <Header subtitle="Basic Details"/>
+              <Box
+                display="grid"
+                gap="30px"
+                gridTemplateColumns="repeat(4, minmax(0, 1fr))"
+                sx={{
+                  "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
                 }}
-                error={touched.storeStartTime && !!errors.storeStartTime}
-                helperText={touched.storeStartTime && errors.storeStartTime}
-                margin="normal"
-                sx={{ gridColumn: "span 2" }}
-              />
-              <Field
-                as={TextField}
-                name="storeEndTime"
-                label="End Time"
-                type="time"
-                fullWidth
-                variant="filled"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <TimerOffIcon />
-                    </InputAdornment>
-                  ),
-                }}
-                error={touched.storeEndTime && !!errors.storeEndTime}
-                helperText={touched.storeEndTime && errors.storeEndTime}
-                margin="normal"
-                sx={{ gridColumn: "span 2" }}
-              />
-              <Field
-                as={TextField}
-                name="timezone"
-                label="Timezone"
-                fullWidth
-                variant="filled"
-                select
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <LanguageIcon />
-                    </InputAdornment>
-                  ),
-                }}
-                onChange={handleChange}
-                error={touched.timezone && !!errors.timezone}
-                helperText={touched.timezone && errors.timezone}
-                margin="normal"
-                sx={{ gridColumn: "span 2" }}
               >
-                {timezones.map((timezone) => (
-                  <MenuItem key={timezone} value={timezone}>
-                    {timezone}
-                  </MenuItem>
-                ))}
-              </Field>
-              <Field
-                as={TextField}
-                name="storeOperationalStatus"
-                label="Operational Status"
-                fullWidth
-                variant="filled"
-                select
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SettingsIcon />
-                    </InputAdornment>
-                  ),
-                }}
-                onChange={handleChange}
-                error={touched.storeOperationalStatus && !!errors.storeOperationalStatus}
-                helperText={touched.storeOperationalStatus && errors.storeOperationalStatus}
-                margin="normal"
-                sx={{ gridColumn: "span 2" }}
-              >
-                {operationalStatuses.map((status) => (
-                  <MenuItem key={status} value={status}>
-                    {status}
-                  </MenuItem>
-                ))}
-              </Field>
+                <Field
+                  as={TextField}
+                  name="storeName"
+                  label="Store Name"
+                  fullWidth
+                  variant="filled"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <DriveFileRenameOutlineIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                  error={touched.storeName && !!errors.storeName}
+                  helperText={touched.storeName && errors.storeName}
+                  //margin="normal"
+                  sx={{ gridColumn: "span 4" }}
+                />
+                <Field
+                  as={TextField}
+                  name="storeStartTime"
+                  label="Start Time"
+                  type="time"
+                  fullWidth
+                  variant="filled"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <AccessTimeIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                  error={touched.storeStartTime && !!errors.storeStartTime}
+                  helperText={touched.storeStartTime && errors.storeStartTime}
+                  //margin="normal"
+                  sx={{ gridColumn: "span 2" }}
+                />
+                <Field
+                  as={TextField}
+                  name="storeEndTime"
+                  label="End Time"
+                  type="time"
+                  fullWidth
+                  variant="filled"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <TimerOffIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                  error={touched.storeEndTime && !!errors.storeEndTime}
+                  helperText={touched.storeEndTime && errors.storeEndTime}
+                  //margin="normal"
+                  sx={{ gridColumn: "span 2" }}
+                />
+                <Field
+                  as={TextField}
+                  name="timezone"
+                  label="Timezone"
+                  fullWidth
+                  variant="filled"
+                  select
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <LanguageIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                  onChange={handleChange}
+                  error={touched.timezone && !!errors.timezone}
+                  helperText={touched.timezone && errors.timezone}
+                  //margin="normal"
+                  sx={{ gridColumn: "span 2" }}
+                >
+                  {timezones.map((timezone) => (
+                    <MenuItem key={timezone} value={timezone}>
+                      {timezone}
+                    </MenuItem>
+                  ))}
+                </Field>
+                <Field
+                  as={TextField}
+                  name="storeOperationalStatus"
+                  label="Operational Status"
+                  fullWidth
+                  variant="filled"
+                  select
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SettingsIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                  onChange={handleChange}
+                  error={touched.storeOperationalStatus && !!errors.storeOperationalStatus}
+                  helperText={touched.storeOperationalStatus && errors.storeOperationalStatus}
+                  //margin="normal"
+                  sx={{ gridColumn: "span 2" }}
+                >
+                  {operationalStatuses.map((status) => (
+                    <MenuItem key={status} value={status}>
+                      {status}
+                    </MenuItem>
+                  ))}
+                </Field>
+              </Box>
             </Box>
             <Box mt="20px">
-              <Typography variant="h6">Store Calendar</Typography>
+              <Header subtitle="Store Calendar" />
               <Box display="grid" gridTemplateColumns="repeat(7, 1fr)" gap="10px" mt="10px">
                 {daysOfWeek.map((day) => (
                   <Field
@@ -252,7 +275,7 @@ const StoreDetails = () => {
               </Box>
             </Box>
             <Box mt="20px">
-              <Typography variant="h6">Store Configuration</Typography>
+              <Header subtitle="Store Configuration" />
               <Tabs
                 value={selectedTab}
                 onChange={handleTabChange}

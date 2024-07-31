@@ -1488,7 +1488,7 @@ export const mockDataStoreDetails = [
 	  storeName: "Eastern Warehouse",
 	  timezone: "IST",
 	  storeStartTime: "09:00",
-	  storeEndtime: "21:00",
+	  storeEndtime: "18:00",
 	  storeOperationalStatus: "True",
 	  storeCalendar:
 	    {
@@ -1547,4 +1547,21 @@ export const mockDataStoreDetails = [
 	        }
 	    }
 	}
-];  
+];
+
+export const mockDataProductList = [
+  {
+    id: 1,
+    productName: "Small Bananas",
+    productType: "Stocked",
+    measurement: "Units",
+    totalInventory: 60
+  },
+  {
+    id: 2,
+    productName: "Mangoes",
+    productType: "Non-stocked",
+    measurement: "Kg",
+    totalInventory: 100
+  }
+];
