@@ -1,14 +1,9 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Button, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
-import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
+import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import TagIcon from "@mui/icons-material/Tag";
+import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
-import { ClassNames } from "@emotion/react";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/Inbox";
 import DraftsIcon from "@mui/icons-material/Drafts";
 import AssignmentIcon from "@mui/icons-material/Assignment";
@@ -35,7 +30,8 @@ const PurchaseBox = ({}) => {
         flexDirection="row"
         padding="0px 0px"
         justifyContent="center"
-        borderBottom={`2px solid ${colors.primary[500]}`}
+        borderBottom={`2px solid ${colors.grey[500]}`}
+        sx={{ width: "100%" }}
       >
         {/* PriceBox */}
 
@@ -66,13 +62,13 @@ const PurchaseBox = ({}) => {
           width="100%"
           flexDirection="column"
           justifyContent="center"
-          padding="10px 10px"
+          m="10px 10px"
         >
           <TagIcon sx={{ fontSize: 35 }} />
           <Typography
             variant="h4"
             sx={{ color: colors.grey[100] }}
-            padding="3px 3px"
+            m="10px 10px"
           >
             5
           </Typography>
@@ -82,38 +78,30 @@ const PurchaseBox = ({}) => {
         </Box>
       </Box>
 
-      <Box
-        display="flex"
-        width="100%"
-        flexDirection="column"
-        justifyContent="center"
-        padding="10px 10px"
+      <Grid
+        container
+        spacing={2}
+        sx={{ width: "80%", height: "80%", margin: "0 auto" }}
       >
-        <List>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <InboxIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="Create purchase order"
-                primaryTypographyProps={{ fontSize: "16px" }}
-              />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <DraftsIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="Add new vendor"
-                primaryTypographyProps={{ fontSize: "16px" }}
-              />
-            </ListItemButton>
-          </ListItem>
-        </List>
-      </Box>
+        <Grid item xs={12} sm={6}>
+          <Button
+            variant="text"
+            startIcon={<InboxIcon />}
+            sx={{ width: "100%", height: "100%", fontSize: "16px" }}
+          >
+            Create new PO
+          </Button>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Button
+            variant="text"
+            startIcon={<DraftsIcon />}
+            sx={{ width: "100%", height: "100%", fontSize: "16px" }}
+          >
+            Add new vendor
+          </Button>
+        </Grid>
+      </Grid>
     </Box> // Parent box ending
   );
 };

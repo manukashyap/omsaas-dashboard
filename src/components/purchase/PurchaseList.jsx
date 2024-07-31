@@ -1,7 +1,6 @@
 import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { mockDataContacts } from "../../data/mockData";
 import { mockDataInvoices } from "../../data/mockData";
 import { useTheme } from "@mui/material";
 
@@ -12,14 +11,14 @@ const PurchaseList = () => {
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
     {
-      field: "name",
-      headerName: "Name",
+      field: "vendorName",
+      headerName: "Vendor Name",
       flex: 1,
       cellClassName: "name-column--cell",
     },
     {
-      field: "phone",
-      headerName: "Phone Number",
+      field: "vendorContact",
+      headerName: "Vendor Contact",
       flex: 1,
     },
     {
@@ -28,7 +27,7 @@ const PurchaseList = () => {
       flex: 1,
     },
     {
-      field: "cost",
+      field: "totalCost",
       headerName: "Order Value",
       flex: 1,
     },

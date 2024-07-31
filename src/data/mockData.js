@@ -202,75 +202,75 @@ export const mockDataContacts = [
 export const mockDataInvoices = [
   {
     id: 1,
-    name: "Jon Snow",
-    email: "jonsnow@gmail.com",
-    cost: "₹100000",
-    phone: "(665)121-5454",
+    vendorName: "Hari Das",
+    email: "haridd@gmail.com",
+    totalCost: "100000",
+    vendorContact: "(665)121-5454",
     timestamp: "03/07/2024",
-    status: "Order placed"
+    status: "Order placed",
   },
   {
     id: 2,
-    name: "Cersei Lannister",
-    email: "cerseilannister@gmail.com",
-    cost: "₹80000",
-    phone: "(421)314-2288",
+    vendorName: "Vishwas Sen",
+    email: "vissshwsn@gmail.com",
+    totalCost: "80000",
+    vendorContact: "(421)314-2288",
     timestamp: "24/06/2024",
-    status: "Order placed"
+    status: "Order placed",
   },
   {
     id: 3,
-    name: "Jaime Lannister",
-    email: "jaimelannister@gmail.com",
-    cost: "₹50000",
-    phone: "(422)982-6739",
+    vendorName: "Guru Dutt",
+    email: "gd455@gmail.com",
+    totalCost: "50000",
+    vendorContact: "(422)982-6739",
     timestamp: "21/06/2024",
-    status: "Order placed"
+    status: "Order placed",
   },
   {
     id: 4,
-    name: "Anya Stark",
-    email: "anyastark@gmail.com",
-    cost: "₹80000",
-    phone: "(921)425-6742",
+    vendorName: "Armaan Malik",
+    email: "arman983@gmail.com",
+    totalCost: "80000",
+    vendorContact: "(921)425-6742",
     timestamp: "18/06/2024",
-    status: "Order placed"
+    status: "Order placed",
   },
   {
     id: 5,
-    name: "Daenerys Targaryen",
-    email: "daenerystargaryen@gmail.com",
-    cost: "₹100000",
-    phone: "(421)445-1189",
+    vendorName: "Tapas Kumar",
+    email: "tapaskumar98@gmail.com",
+    totalCost: "100000",
+    vendorContact: "(421)445-1189",
     timestamp: "01/06/2024",
-    status: "Order placed"
+    status: "Order placed",
   },
   {
     id: 6,
-    name: "Ever Melisandre",
-    email: "evermelisandre@gmail.com",
-    cost: "₹65000",
-    phone: "(232)545-6483",
+    vendorName: "Johhny Sen",
+    email: "johhnysen@gmail.com",
+    totalCost: "65000",
+    vendorContact: "(232)545-6483",
     timestamp: "11/05/2024",
-    status: "Pending payment"
+    status: "Pending payment",
   },
   {
     id: 7,
-    name: "Ferrara Clifford",
-    email: "ferraraclifford@gmail.com",
-    cost: "₹52000",
-    phone: "(543)124-0123",
+    vendorName: "Sudhanshu Singh",
+    email: "sudhsing@gmail.com",
+    totalCost: "52000",
+    vendorContact: "(543)124-0123",
     timestamp: "02/05/2024",
-    status: "Payment done"
+    status: "Payment done",
   },
   {
     id: 8,
-    name: "Rossini Frances",
+    vendorName: "Rossini Frances",
     email: "rossinifrances@gmail.com",
-    cost: "₹225000",
-    phone: "(222)444-5555",
+    totalCost: "225000",
+    vendorContact: "(222)444-5555",
     timestamp: "05/04/2024",
-    status: "Payment done"
+    status: "Payment done",
   },
 ];
 
@@ -1309,13 +1309,13 @@ export const mockDataVendor = [
     address2: "",
     pincode: "123456",
     website: "www.fruitloops.com",
-    productDetails:[
-        {
-          productId: 3,
-          buyPrice: 34,
-          unit: "Kg"
-        }
-      ]    
+    productDetails: [
+      {
+        productId: 3,
+        buyPrice: 34,
+        unit: "Kg",
+      },
+    ],
   },
   {
     vendorId: 2,
@@ -1327,19 +1327,18 @@ export const mockDataVendor = [
     address2: "",
     pincode: "456111",
     website: "www.fruitcenter.com",
-    productDetails:
-      [
-        {
-          productId: 2,
-          buyPrice: 55,
-          unit: "Kg"
-        },
-        {
-          productId: 4,
-          buyPrice: 41,
-          unit: "Kg"
-        }
-      ]
+    productDetails: [
+      {
+        productId: 2,
+        buyPrice: 55,
+        unit: "Kg",
+      },
+      {
+        productId: 4,
+        buyPrice: 41,
+        unit: "Kg",
+      },
+    ],
   },
   {
     vendorId: 3,
@@ -1351,83 +1350,78 @@ export const mockDataVendor = [
     address2: "",
     pincode: "987456",
     website: "www.wowfruits.com",
-    productDetails:
-      [
-        {
-          productId: 1,
-          buyPrice: 23,
-          unit: "Kg"
-        },
-        {
-          productId: 3,
-          buyPrice: 37,
-          unit: "Kg"
-        }
-      ]
-  }
+    productDetails: [
+      {
+        productId: 1,
+        buyPrice: 23,
+        unit: "Kg",
+      },
+      {
+        productId: 3,
+        buyPrice: 37,
+        unit: "Kg",
+      },
+    ],
+  },
 ];
 export const mockDataProduct = [
   {
     productId: 1,
     productName: "Grapes",
     productType: "Non-Stocked",
-    purchaseDetails:
-      [
-        {
-          vendorId: 3,
-          buyPrice: 23,
-          unit: "Kg"
-        }
-      ],
-    sellPrice: 29
+    purchaseDetails: [
+      {
+        vendorId: 3,
+        buyPrice: 23,
+        unit: "Kg",
+      },
+    ],
+    sellPrice: 29,
   },
   {
     productId: 2,
     productName: "Mangoes",
     productType: "Stocked",
-    purchaseDetails:
-      [
-        {
-          vendorId: 2,
-          buyPrice: 55,
-          unit: "Kg"
-        }
-      ],
-    sellPrice: 67
+    purchaseDetails: [
+      {
+        vendorId: 2,
+        buyPrice: 55,
+        unit: "Kg",
+      },
+    ],
+    sellPrice: 67,
   },
   {
     productId: 3,
     productName: "Banana",
     productType: "Serialized",
-    purchaseDetails:
-      [
-        {
-          vendorId: 1,
-          buyPrice: 34,
-          unit: "Kg"
-        },
-        {
-          vendorId: 3,
-          buyPrice: 37,
-          unit: "Kg"
-        }
-      ],
-    sellPrice: 41
+    purchaseDetails: [
+      {
+        vendorId: 1,
+        buyPrice: 34,
+        unit: "Kg",
+      },
+      {
+        vendorId: 3,
+        buyPrice: 37,
+        unit: "Kg",
+      },
+    ],
+    sellPrice: 41,
   },
   {
     productId: 4,
     productName: "Strawberry",
     productType: "Service",
-    purchaseDetails:
-      [
-        {
-          vendorId: 2,
-          buyPrice: 41,
-          unit: "Kg"
-        }
-      ],
-    sellPrice: 50
-  }
+    purchaseDetails: [
+      {
+        vendorId: 2,
+        buyPrice: 41,
+        unit: "Kg",
+      },
+    ],
+    sellPrice: 50,
+  },
 ];
 
 export const mockDataVendorProduct = [
@@ -1435,32 +1429,32 @@ export const mockDataVendorProduct = [
     vendorId: 1,
     productId: 3,
     buyPrice: 34,
-    unit: "Kg"
+    unit: "Kg",
   },
   {
     vendorId: 2,
     productId: 2,
     buyPrice: 55,
-    unit: "Kg"
+    unit: "Kg",
   },
   {
     vendorId: 2,
     productId: 4,
     buyPrice: 41,
-    unit: "Kg"
+    unit: "Kg",
   },
   {
     vendorId: 3,
     productId: 1,
     buyPrice: 23,
-    unit: "Kg"
+    unit: "Kg",
   },
   {
     vendorId: 3,
     productId: 3,
     buyPrice: 37,
-    unit: "Kg"
-  }
+    unit: "Kg",
+  },
 ];
 
 export const mockDataStoreList = [
@@ -1470,7 +1464,7 @@ export const mockDataStoreList = [
     storeStartTime: "09:00",
     storeEndTime: "18:00",
     timezone: "IST",
-    storeOperationalStatus: "True"
+    storeOperationalStatus: "True",
   },
   {
     id: 2,
@@ -1478,85 +1472,75 @@ export const mockDataStoreList = [
     storeStartTime: "09:00",
     storeEndTime: "21:00",
     timezone: "IST",
-    storeOperationalStatus: "True"
-  }
+    storeOperationalStatus: "True",
+  },
 ];
 
 export const mockDataStoreDetails = [
-	{
-	  storeId: 1,
-	  storeName: "Eastern Warehouse",
-	  timezone: "IST",
-	  storeStartTime: "09:00",
-	  storeEndtime: "21:00",
-	  storeOperationalStatus: "True",
-	  storeCalendar:
-	    {
-	      Monday: "True",
-	      Tuesday: "True",
-	      Wednesday: "True",
-	      Thrusday: "True",
-	      Friday: "True",
-	      Saturday: "True",
-	      Sunday: "False",
-	    },
-	  storeCapacity:
-	    {
-	      StoreManagerId: 1,
-	      StoreManagerName: "Manoj Tiwari",
-	      fte: 2
-	    },
-	  storeType:
-	    {
-	      Inflow:
-	        {
-	          purchaseOrder: "True",
-	          stockTransfer: "True"
-	        },
-	      Outflow:
-	        {
-	          stockTransfer: "True",
-	          salvage: "True",
-	          sales: "False"
-	        }
-	    }
-	},
-	{
-	  storeId: 2,
-	  storeName: "MJ Road Store",
-	  timezone: "IST",
-	  storeStartTime: "09:00",
-	  storeEndtime: "21:00",
-	  storeOperationalStatus: "True",
-	  storeCalendar:
-	    {
-	      Monday: "True",
-	      Tuesday: "True",
-	      Wednesday: "True",
-	      Thrusday: "True",
-	      Friday: "True",
-	      Saturday: "True",
-	      Sunday: "True",
-	    },
-	  storeCapacity:
-	    {
-	      StoreManagerId: 2,
-	      StoreManagerName: "Naman Shah",
-	      fte: 2
-	    },
-	  storeType:
-	    {
-	      Inflow:
-	        {
-	          purchaseOrder: "False",
-	          stockTransfer: "True"
-	        },
-	      Outflow:
-	        {
-	          stockTransfer: "True",
-	          salvage: "True",
-	          sales: "True"
-	        }
-	    }
-	}
-];  
+  {
+    storeId: 1,
+    storeName: "Eastern Warehouse",
+    timezone: "IST",
+    storeStartTime: "09:00",
+    storeEndtime: "21:00",
+    storeOperationalStatus: "True",
+    storeCalendar: {
+      Monday: "True",
+      Tuesday: "True",
+      Wednesday: "True",
+      Thrusday: "True",
+      Friday: "True",
+      Saturday: "True",
+      Sunday: "False",
+    },
+    storeCapacity: {
+      StoreManagerId: 1,
+      StoreManagerName: "Manoj Tiwari",
+      fte: 2,
+    },
+    storeType: {
+      Inflow: {
+        purchaseOrder: "True",
+        stockTransfer: "True",
+      },
+      Outflow: {
+        stockTransfer: "True",
+        salvage: "True",
+        sales: "False",
+      },
+    },
+  },
+  {
+    storeId: 2,
+    storeName: "MJ Road Store",
+    timezone: "IST",
+    storeStartTime: "09:00",
+    storeEndtime: "21:00",
+    storeOperationalStatus: "True",
+    storeCalendar: {
+      Monday: "True",
+      Tuesday: "True",
+      Wednesday: "True",
+      Thrusday: "True",
+      Friday: "True",
+      Saturday: "True",
+      Sunday: "True",
+    },
+    storeCapacity: {
+      StoreManagerId: 2,
+      StoreManagerName: "Naman Shah",
+      fte: 2,
+    },
+    storeType: {
+      Inflow: {
+        purchaseOrder: "False",
+        stockTransfer: "True",
+      },
+      Outflow: {
+        stockTransfer: "True",
+        salvage: "True",
+        sales: "True",
+      },
+    },
+  },
+];
