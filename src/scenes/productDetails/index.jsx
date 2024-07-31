@@ -1,19 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import { useParams, useNavigate } from 'react-router-dom';
-import { mockDataProductDetails } from '../../data/mockData';
-import { Box, Typography, TextField, Button, InputAdornment } from '@mui/material';
+import { mockDataProductDetails, mockDataStoreDetails } from '../../data/mockData';
+import { Box, Typography, TextField, Button, InputAdornment, useTheme } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import useMediaQuery from "@mui/material/useMediaQuery";
 import CategoryIcon from '@mui/icons-material/Category';
 import StraightenIcon from '@mui/icons-material/Straighten';
 import InventoryIcon from '@mui/icons-material/Inventory';
+import { DataGrid } from '@mui/x-data-grid';
 import Header from "../../components/Header";
+import { tokens } from "../../theme";
 
 // List of measurements
 const measurements = ["Units", "Dozen", "Kg", "g", "Pound (lb)"];
 
 const ProductDetails = () => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const { id } = useParams();
   const navigate = useNavigate();
@@ -56,6 +60,20 @@ const ProductDetails = () => {
     }
   };
 
+  const columns = [
+    { field: 'storeId', headerName: 'Store ID', flex: 1 },
+    { field: 'storeName', headerName: 'Store Name', flex: 1 },
+    { field: 'inventory', headerName: 'Inventory', flex: 1 }
+  ];
+
+  const rows = product.inventoryDetails.map((detail) => {
+    const store = mockDataStoreDetails.find((store) => store.storeId === detail.storeId);
+    return {
+      ...detail,
+      storeName: store ? store.storeName : 'Unknown'
+    };
+  });
+
   return (
     <Box m="20px">
       <Typography variant="h4" gutterBottom>
@@ -95,7 +113,6 @@ const ProductDetails = () => {
                 }}
                 error={touched.productName && !!errors.productName}
                 helperText={touched.productName && errors.productName}
-                //margin="normal"
                 sx={{ gridColumn: "span 4" }}
               />
               <Field
@@ -111,11 +128,11 @@ const ProductDetails = () => {
                     </InputAdornment>
                   ),
                   readOnly: true, // Make the field read-only
+                  style: { cursor: 'not-allowed' } // Change cursor style
                 }}
                 error={touched.productType && !!errors.productType}
                 helperText={touched.productType && errors.productType}
-                //margin="normal"
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 2", backgroundColor: 'rgba(0, 0, 0, 0.1)' }} // Non-editable style
               />
               <Field
                 as={TextField}
@@ -130,11 +147,11 @@ const ProductDetails = () => {
                     </InputAdornment>
                   ),
                   readOnly: true, // Make the field read-only
+                  style: { cursor: 'not-allowed' } // Change cursor style
                 }}
                 error={touched.measurement && !!errors.measurement}
                 helperText={touched.measurement && errors.measurement}
-                //margin="normal"
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 2", backgroundColor: 'rgba(0, 0, 0, 0.1)' }} // Non-editable style
               />
               <Field
                 as={TextField}
@@ -150,12 +167,58 @@ const ProductDetails = () => {
                     </InputAdornment>
                   ),
                   readOnly: true, // Make the field read-only
+                  style: { cursor: 'not-allowed' } // Change cursor style
                 }}
                 error={touched.totalInventory && !!errors.totalInventory}
                 helperText={touched.totalInventory && errors.totalInventory}
-                //margin="normal"
-                sx={{ gridColumn: "span 4" }}
+                sx={{ gridColumn: "span 4", backgroundColor: 'rgba(0, 0, 0, 0.1)' }} // Non-editable style
               />
+            </Box>
+            <Box mt={4}>
+              <Header subtitle="Inventory Details" sx={{ mt: 0 }}/>
+              <Box
+                sx={{
+                  height: 200,
+                  backgroundColor: 'rgba(0, 0, 0, 0.05)',
+                  padding: '10px',
+                  borderRadius: '4px',
+                  marginTop: '10px' // Reduced margin for consistency
+                }}
+              >
+                <DataGrid
+                  rows={rows}
+                  columns={columns}
+                  pageSize={3}
+                  rowsPerPageOptions={[3]}
+                  disableSelectionOnClick
+                  getRowId={(row) => row.storeId}
+                  sx={{
+                    "& .MuiDataGrid-root": {
+                      border: "none",
+                    },
+                    "& .MuiDataGrid-cell": {
+                      borderBottom: "none",
+                    },
+                    "& .MuiDataGrid-columnHeaders": {
+                      backgroundColor: colors.blueAccent[700],
+                      borderBottom: "none",
+                    },
+                    "& .MuiDataGrid-virtualScroller": {
+                      backgroundColor: colors.primary[400],
+                    },
+                    "& .MuiDataGrid-footerContainer": {
+                      borderTop: "none",
+                      backgroundColor: colors.blueAccent[700],
+                    },
+                    "& .MuiCheckbox-root": {
+                      color: `${colors.greenAccent[200]} !important`,
+                    },
+                    "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+                      color: `${colors.grey[100]} !important`,
+                    },
+                  }}
+                />
+              </Box>
             </Box>
             <Box display="flex" justifyContent="space-between" mt={2}>
               <Button variant="contained" color="secondary" type="submit">

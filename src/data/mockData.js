@@ -1513,7 +1513,18 @@ export const mockDataStoreDetails = [
 	          salvage: "True",
 	          sales: "False"
 	        }
-	    }
+	    },
+    inventoryDetails:
+      [
+        {
+          productId: 1,
+          inventory: 40
+        },
+        {
+          productId: 2,
+          inventory: 30
+        }
+      ]
 	},
 	{
 	  storeId: 2,
@@ -1545,7 +1556,18 @@ export const mockDataStoreDetails = [
 	          salvage: "True",
 	          sales: "True"
 	        }
-	    }
+	    },
+    inventoryDetails:
+      [
+        {
+          productId: 1,
+          inventory: 20
+        },
+        {
+          productId: 2,
+          inventory: 70
+        }
+      ]
 	}
 ];
 
@@ -1572,13 +1594,37 @@ export const mockDataProductDetails = [
     productName: "Small Bananas",
     productType: "Stocked",
     measurement: "Units",
-    totalInventory: 60
+    totalInventory: 60,
+    inventoryDetails:
+      [
+        {
+          storeId: 1,
+          inventory: 40
+        },
+        {
+          storeId: 2,
+          inventory: 20
+        }
+        
+      ]
   },
   {
     productId: 2,
     productName: "Mangoes",
     productType: "Non-stocked",
     measurement: "Kg",
-    totalInventory: 100
+    totalInventory: 100,
+    inventoryDetails:
+      [
+        {
+          storeId: 1,
+          inventory: 30
+        },
+        {
+          storeId: 2,
+          inventory: 70
+        }
+        
+      ]
   }
 ];

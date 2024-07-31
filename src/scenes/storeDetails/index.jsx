@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
-import { mockDataStoreDetails } from '../../data/mockData';
+import { mockDataStoreDetails, mockDataProductDetails } from '../../data/mockData';
 import { Box, Typography, TextField, Button, InputAdornment, MenuItem, Tabs, Tab, useTheme } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -14,7 +14,9 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import RestoreIcon from '@mui/icons-material/Restore';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
+import { DataGrid } from '@mui/x-data-grid';
 import Header from "../../components/Header";
+import { tokens } from "../../theme";
 
 // List of timezones
 const timezones = [
@@ -40,6 +42,7 @@ const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Sat
 
 const StoreDetails = () => {
   const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const { id } = useParams();
   const navigate = useNavigate();
@@ -112,6 +115,22 @@ const StoreDetails = () => {
     setSelectedTab(newValue);
   };
 
+  const inventoryDetails = mockDataProductDetails.flatMap(product => 
+    product.inventoryDetails
+      .filter(detail => detail.storeId === store.storeId)
+      .map(detail => ({
+        productId: product.productId,
+        productName: product.productName,
+        inventory: detail.inventory
+      }))
+  );
+
+  const columns = [
+    { field: 'productId', headerName: 'Product ID', flex: 1 },
+    { field: 'productName', headerName: 'Product Name', flex: 1 },
+    { field: 'inventory', headerName: 'Inventory', flex: 1 }
+  ];
+
   return (
     <Box m="20px">
       <Typography variant="h4" gutterBottom>
@@ -152,7 +171,6 @@ const StoreDetails = () => {
                   }}
                   error={touched.storeName && !!errors.storeName}
                   helperText={touched.storeName && errors.storeName}
-                  //margin="normal"
                   sx={{ gridColumn: "span 4" }}
                 />
                 <Field
@@ -171,8 +189,7 @@ const StoreDetails = () => {
                   }}
                   error={touched.storeStartTime && !!errors.storeStartTime}
                   helperText={touched.storeStartTime && errors.storeStartTime}
-                  //margin="normal"
-                  sx={{ gridColumn: "span 2" }}
+                  sx={{ gridColumn: "span 1" }}
                 />
                 <Field
                   as={TextField}
@@ -190,8 +207,7 @@ const StoreDetails = () => {
                   }}
                   error={touched.storeEndTime && !!errors.storeEndTime}
                   helperText={touched.storeEndTime && errors.storeEndTime}
-                  //margin="normal"
-                  sx={{ gridColumn: "span 2" }}
+                  sx={{ gridColumn: "span 1" }}
                 />
                 <Field
                   as={TextField}
@@ -210,8 +226,7 @@ const StoreDetails = () => {
                   onChange={handleChange}
                   error={touched.timezone && !!errors.timezone}
                   helperText={touched.timezone && errors.timezone}
-                  //margin="normal"
-                  sx={{ gridColumn: "span 2" }}
+                  sx={{ gridColumn: "span 1" }}
                 >
                   {timezones.map((timezone) => (
                     <MenuItem key={timezone} value={timezone}>
@@ -236,8 +251,7 @@ const StoreDetails = () => {
                   onChange={handleChange}
                   error={touched.storeOperationalStatus && !!errors.storeOperationalStatus}
                   helperText={touched.storeOperationalStatus && errors.storeOperationalStatus}
-                  //margin="normal"
-                  sx={{ gridColumn: "span 2" }}
+                  sx={{ gridColumn: "span 1" }}
                 >
                   {operationalStatuses.map((status) => (
                     <MenuItem key={status} value={status}>
@@ -437,6 +451,55 @@ const StoreDetails = () => {
                     </Field>
                   </>
                 )}
+              </Box>
+            </Box>
+            <Box mt="20px">
+              <Header subtitle="Inventory Details" />
+              <Box
+                sx={{
+                  height: 200,
+                  backgroundColor: 'rgba(0, 0, 0, 0.05)',
+                  padding: '10px',
+                  borderRadius: '4px',
+                  marginTop: '10px'
+                }}
+              >
+                <DataGrid
+                  rows={inventoryDetails}
+                  columns={columns}
+                  pageSize={3}
+                  rowsPerPageOptions={[3]}
+                  disableSelectionOnClick
+                  getRowId={(row) => row.productId}
+                  sx={{
+                    "& .MuiDataGrid-root": {
+                      border: "none",
+                    },
+                    "& .MuiDataGrid-cell": {
+                      borderBottom: "none",
+                    },
+                    "& .MuiDataGrid-columnHeaders": {
+                      backgroundColor: colors.blueAccent[700],
+                      borderBottom: "none",
+                    },
+                    "& .MuiDataGrid-virtualScroller": {
+                      backgroundColor: colors.primary[400],
+                    },
+                    "& .MuiDataGrid-footerContainer": {
+                      borderTop: "none",
+                      backgroundColor: colors.blueAccent[700],
+                    },
+                    "& .MuiCheckbox-root": {
+                      color: `${colors.greenAccent[200]} !important`,
+                    },
+                    "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+                      color: `${colors.grey[100]} !important`,
+                    },
+                    "& .MuiDataGrid-toolbarContainer": {
+                      display: 'none',
+                    },
+                  }}
+                />
               </Box>
             </Box>
             <Box display="flex" justifyContent="space-between" mt={2}>
