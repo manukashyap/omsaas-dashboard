@@ -17,6 +17,10 @@ import Vendors from "./scenes/vendors";
 import VendorAdd from "./scenes/vendorAdd";
 import AllStores from "./scenes/allStores";
 import StoreDetails from "./scenes/storeDetails";
+import ProductDetails from "./scenes/productDetails";
+import NewStore from "./scenes/createNewStore";
+import NewProduct from "./scenes/createNewProduct";
+import AllProducts from "./scenes/allProducts";
 
 
 function App() {
@@ -40,6 +44,10 @@ function App() {
               <Route path="/vendorAdd" element={<VendorAdd />} />
               <Route path="/stores" element={<AllStores />} />
               <Route path="/storeDetails/:id" element={<StoreDetails />} />
+              <Route path="/createNewStore" element={<NewStore />} />
+              <Route path="/product" element={<AllProducts />} />
+              <Route path="/productDetails/:id" element={<ProductDetails />} />
+              <Route path="/createNewProduct" element={<NewProduct />} />
               <Route path="/inventory" element={<Inventory />} />
               <Route path="/sales" element={<Sales />} />
               <Route path="/faq" element={<FAQ />} />
