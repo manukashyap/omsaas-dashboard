@@ -1465,7 +1465,7 @@ export const mockDataVendorProduct = [
 
 export const mockDataStoreList = [
   {
-    id: 1,
+    storeId: 1,
     storeName: "Eastern Warehouse",
     storeStartTime: "09:00",
     storeEndTime: "18:00",
@@ -1473,7 +1473,7 @@ export const mockDataStoreList = [
     storeOperationalStatus: "True"
   },
   {
-    id: 2,
+    storeId: 2,
     storeName: "MJ Road Store",
     storeStartTime: "09:00",
     storeEndTime: "21:00",
@@ -1551,14 +1551,31 @@ export const mockDataStoreDetails = [
 
 export const mockDataProductList = [
   {
-    id: 1,
+    productId: 1,
     productName: "Small Bananas",
     productType: "Stocked",
     measurement: "Units",
     totalInventory: 60
   },
   {
-    id: 2,
+    productId: 2,
+    productName: "Mangoes",
+    productType: "Non-stocked",
+    measurement: "Kg",
+    totalInventory: 100
+  }
+];
+
+export const mockDataProductDetails = [
+  {
+    productId: 1,
+    productName: "Small Bananas",
+    productType: "Stocked",
+    measurement: "Units",
+    totalInventory: 60
+  },
+  {
+    productId: 2,
     productName: "Mangoes",
     productType: "Non-stocked",
     measurement: "Kg",

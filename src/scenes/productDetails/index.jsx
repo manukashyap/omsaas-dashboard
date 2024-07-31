@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
-import { mockDataProductList } from '../../data/mockData';
+import { mockDataProductDetails } from '../../data/mockData';
 import { Box, Typography, TextField, Button, InputAdornment } from '@mui/material';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -17,7 +17,7 @@ const ProductDetails = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const { id } = useParams();
   const navigate = useNavigate();
-  const product = mockDataProductList.find((product) => product.id === parseInt(id));
+  const product = mockDataProductDetails.find((product) => product.productId === parseInt(id));
 
   if (!product) {
     return <Typography variant="h4">Product not found</Typography>;
@@ -46,10 +46,10 @@ const ProductDetails = () => {
   const handleDelete = () => {
     const confirmDelete = window.confirm("Are you sure you want to delete this product?");
     if (confirmDelete) {
-      const updatedProductList = [...mockDataProductList];
-      const index = updatedProductList.findIndex((product) => product.id === parseInt(id));
+      const updatedProductDetails = [...mockDataProductDetails];
+      const index = updatedProductDetails.findIndex((product) => product.productId === parseInt(id));
       if (index !== -1) {
-        updatedProductList.splice(index, 1);
+        updatedProductDetails.splice(index, 1);
         alert('Product deleted successfully!');
         navigate('/product');
       }
@@ -62,7 +62,7 @@ const ProductDetails = () => {
         {product.productName} Details
       </Typography>
       <Typography variant="body1">
-        <strong>Product ID:</strong> {product.id}
+        <strong>Product ID:</strong> {product.productId}
       </Typography>
       <Formik
         initialValues={initialValues}

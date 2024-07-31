@@ -10,7 +10,7 @@ const StoreList = () => {
   const navigate = useNavigate();
 
   const columns = [
-    { field: "id", headerName: "Store ID", flex: 0.5 },
+    { field: "storeId", headerName: "Store ID", flex: 0.5 },
     {
       field: "storeName",
       headerName: "Store Name",
@@ -78,6 +78,7 @@ const StoreList = () => {
         }}
       >
         <DataGrid
+          getRowId={(row) => row.storeId}
           rows={mockDataStoreList}
           columns={columns}
           onRowClick={handleRowClick}
