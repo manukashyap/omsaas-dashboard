@@ -83,7 +83,9 @@ const InventoryList = () => { // Updated component name
           rows={inventoryDetailsWithNames} // Updated data source
           columns={columns}
           onRowClick={handleRowClick}
-          hideFooter
+          pageSize={5} // Set default page size
+          rowsPerPageOptions={[5, 10, 20]} // Allow rows per page options
+          pagination // Enable pagination
         />
       </Box>
     </Box>
