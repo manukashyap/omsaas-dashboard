@@ -1622,3 +1622,30 @@ export const mockDataProductDetails = [
       ]
   }
 ];
+
+export const mockDataInventoryDetails = [
+  {
+    productId: 1,
+    storeId: 1,
+    inventory: 40,
+    measurement: "Units",
+  },
+  {
+    productId: 1,
+    storeId: 2,
+    inventory: 20,
+    measurement: "units",
+  },
+  {
+    productId: 2,
+    storeId: 1,
+    inventory: 30,
+    measurement: "Kg",
+  },
+  {
+    productId: 2,
+    storeId: 2,
+    inventory: 70,
+    measurement: "Kg",
+  },
+];
