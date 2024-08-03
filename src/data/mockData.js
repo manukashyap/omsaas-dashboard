@@ -1634,7 +1634,7 @@ export const mockDataInventoryDetails = [
     productId: 1,
     storeId: 2,
     inventory: 20,
-    measurement: "units",
+    measurement: "Units",
   },
   {
     productId: 2,

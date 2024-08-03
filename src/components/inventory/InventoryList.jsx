@@ -1,13 +1,17 @@
+import React, { useState } from "react";
 import { Box, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { mockDataInventoryDetails, mockDataProductDetails, mockDataStoreDetails } from "../../data/mockData"; // Updated import
-import { useNavigate } from 'react-router-dom';
+import {
+  mockDataInventoryDetails,
+  mockDataProductDetails,
+  mockDataStoreDetails,
+} from "../../data/mockData"; // Updated import
+import EditIcon from "@mui/icons-material/Edit"; // Import edit icon
 
-const InventoryList = () => { // Updated component name
+const InventoryList = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const navigate = useNavigate();
 
   // Create a map for quick lookup of product names and store names
   const productNameMap = {};
@@ -20,29 +24,53 @@ const InventoryList = () => { // Updated component name
     storeNameMap[store.storeId] = store.storeName;
   });
 
+  const [rows, setRows] = useState(
+    mockDataInventoryDetails.map((inventoryDetail) => ({
+      ...inventoryDetail,
+      productName: productNameMap[inventoryDetail.productId] || "Unknown",
+      storeName: storeNameMap[inventoryDetail.storeId] || "Unknown",
+    }))
+  );
+
+  const handleProcessRowUpdate = (newRow) => {
+    setRows((prevRows) =>
+      prevRows.map((row) =>
+        row.productId === newRow.productId && row.storeId === newRow.storeId
+          ? { ...row, inventory: newRow.inventory }
+          : row
+      )
+    );
+    return newRow;
+  };
+
   const columns = [
     { field: "productId", headerName: "Product ID", flex: 0.5 },
     { field: "productName", headerName: "Product Name", flex: 1 },
     { field: "storeId", headerName: "Store ID", flex: 0.5 },
     { field: "storeName", headerName: "Store Name", flex: 1 },
-    { field: "inventory", headerName: "Inventory", flex: 1 },
+    {
+      field: "inventory",
+      headerName: "Inventory",
+      flex: 1,
+      editable: true,
+      type: "number",
+      headerAlign: "left", // Align header to the left
+      renderCell: (params) => (
+        <Box display="flex" alignItems="center" sx={{ width: '100%', justifyContent: 'flex-start' }}>
+          <EditIcon
+            fontSize="small"
+            sx={{ color: colors.greenAccent[300], marginRight: 0.5 }}
+          />
+          <div style={{ textAlign: "left", width: "100%" }}>{params.value}</div>
+        </Box>
+      ),
+    },
     {
       field: "measurement",
       headerName: "Measurement",
       flex: 1,
-    }
+    },
   ];
-
-  // Add product names and store names to each inventory detail
-  const inventoryDetailsWithNames = mockDataInventoryDetails.map((inventoryDetail) => ({
-    ...inventoryDetail,
-    productName: productNameMap[inventoryDetail.productId] || "Unknown",
-    storeName: storeNameMap[inventoryDetail.storeId] || "Unknown",
-  }));
-
-  const handleRowClick = (params) => {
-    navigate(`/productDetails/${params.id}`);
-  };
 
   return (
     <Box m="20px">
@@ -80,12 +108,13 @@ const InventoryList = () => { // Updated component name
       >
         <DataGrid
           getRowId={(row) => `${row.productId}-${row.storeId}`} // Ensure unique row ID
-          rows={inventoryDetailsWithNames} // Updated data source
+          rows={rows} // Updated data source
           columns={columns}
-          onRowClick={handleRowClick}
           pageSize={5} // Set default page size
           rowsPerPageOptions={[5, 10, 20]} // Allow rows per page options
           pagination // Enable pagination
+          disableSelectionOnClick // Disable row selection
+          processRowUpdate={handleProcessRowUpdate} // Handle inventory update
         />
       </Box>
     </Box>
