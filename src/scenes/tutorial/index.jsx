@@ -93,7 +93,7 @@ const Tutorial = () => {
 
   return (
     <Box m="20px">
-      <Header title="Tutorial" subtitle="Step-by-step guides for everyday use and operational tasks" />
+      <Header title="Tutorial"/>
       <Box
         sx={{
           maxWidth: "800px", // Limit the width of the Accordion
