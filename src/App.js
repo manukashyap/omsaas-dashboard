@@ -21,6 +21,14 @@ import ProductDetails from "./scenes/productDetails";
 import NewStore from "./scenes/createNewStore";
 import NewProduct from "./scenes/createNewProduct";
 import AllProducts from "./scenes/allProducts";
+import Documentation from "./scenes/document";
+import Document from "./scenes/document";
+import UserManagementGuide from "./scenes/document/userManagement/UserManagementGuide";
+import UserManagementAdding from "./scenes/document/userManagement/UserManagementAdding";
+import UserManagementViewing from "./scenes/document/userManagement/UserManagementViewing";
+import UserManagementRolesPermissions from "./scenes/document/userManagement/UserManagementRolesPermissions";
+import UserManagementPermissions from "./scenes/document/userManagement/UserManagementPermissions";
+import UserManagementPasswordReset from "./scenes/document/userManagement/UserManagementPasswordReset";
 
 
 function App() {
@@ -52,6 +60,14 @@ function App() {
               <Route path="/sales" element={<Sales />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/tutorial" element={<Tutorial />} />
+              <Route path="/document" element={<Document />} />
+              <Route path="/document/user-management" element={<UserManagementGuide />} /> 
+              <Route path="/document/user-management-adding" element={<UserManagementAdding />} />
+              <Route path="/document/user-management-viewing" element={<UserManagementViewing />} />
+              <Route path="/document/user-management-roles-permissions" element={<UserManagementRolesPermissions />} />
+              <Route path="/document/user-management-permissions" element={<UserManagementPermissions />} />
+              <Route path="/document/user-management-password-reset" element={<UserManagementPasswordReset />} />
+       
             </Routes>
           </main>
         </div>
