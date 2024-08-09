@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, useTheme } from "@mui/material";
+import { Box, useTheme, Modal, TextField, Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import {
@@ -7,7 +7,6 @@ import {
   mockDataProductDetails,
   mockDataStoreDetails,
 } from "../../data/mockData"; // Updated import
-import EditIcon from "@mui/icons-material/Edit"; // Import edit icon
 
 const InventoryList = () => {
   const theme = useTheme();
@@ -32,15 +31,45 @@ const InventoryList = () => {
     }))
   );
 
-  const handleProcessRowUpdate = (newRow) => {
-    setRows((prevRows) =>
-      prevRows.map((row) =>
-        row.productId === newRow.productId && row.storeId === newRow.storeId
-          ? { ...row, inventory: newRow.inventory }
-          : row
-      )
-    );
-    return newRow;
+  const [open, setOpen] = useState(false);
+  const [currentRow, setCurrentRow] = useState(null);
+  const [newValue, setNewValue] = useState("");
+  const [reason, setReason] = useState("");
+  const [error, setError] = useState("");
+
+  const handleOpen = (row) => {
+    setCurrentRow(row);
+    setNewValue(""); // Ensure the New Value field is empty when the modal opens
+    setReason("");
+    setError("");
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleNewValueChange = (e) => {
+    const value = e.target.value;
+    if (value < 0) {
+      setError("Please enter a non-negative number.");
+    } else {
+      setError("");
+      setNewValue(value);
+    }
+  };
+
+  const handleUpdate = () => {
+    if (currentRow && error === "") {
+      setRows((prevRows) =>
+        prevRows.map((row) =>
+          row.productId === currentRow.productId && row.storeId === currentRow.storeId
+            ? { ...row, inventory: parseInt(newValue, 10) }
+            : row
+        )
+      );
+    }
+    handleClose();
   };
 
   const columns = [
@@ -52,16 +81,21 @@ const InventoryList = () => {
       field: "inventory",
       headerName: "Inventory",
       flex: 1,
-      editable: true,
+      editable: false,
       type: "number",
       headerAlign: "left", // Align header to the left
       renderCell: (params) => (
-        <Box display="flex" alignItems="center" sx={{ width: '100%', justifyContent: 'flex-start' }}>
-          <EditIcon
-            fontSize="small"
-            sx={{ color: colors.greenAccent[300], marginRight: 0.5 }}
-          />
-          <div style={{ textAlign: "left", width: "100%" }}>{params.value}</div>
+        <Box
+          onClick={() => handleOpen(params.row)}
+          sx={{
+            cursor: "pointer",
+            textDecoration: "underline",
+            color: colors.greenAccent[300],
+            textAlign: "left", // Align text to the left
+            width: "100%",    // Ensures full width clickable
+          }}
+        >
+          {params.value}
         </Box>
       ),
     },
@@ -114,9 +148,74 @@ const InventoryList = () => {
           rowsPerPageOptions={[5, 10, 20]} // Allow rows per page options
           pagination // Enable pagination
           disableSelectionOnClick // Disable row selection
-          processRowUpdate={handleProcessRowUpdate} // Handle inventory update
         />
       </Box>
+      <Modal open={open} onClose={handleClose}>
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 300,
+            bgcolor: "background.paper",
+            border: "2px solid #000",
+            boxShadow: 24,
+            p: 4,
+          }}
+        >
+          <h2>Edit Inventory</h2>
+          <TextField
+            label="Current Value"
+            value={currentRow ? currentRow.inventory : ""}
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            InputProps={{
+              readOnly: true,
+            }}
+          />
+          <TextField
+            label="New Value"
+            value={newValue}
+            onChange={handleNewValueChange}
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            placeholder="Enter new value" // Show a placeholder
+            error={!!error}
+            helperText={error}
+            inputProps={{
+              type: "number",
+              min: "0",
+            }}
+          />
+          <TextField
+            label="Reason"
+            value={reason}
+            onChange={(e) => setReason(e.target.value)}
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            inputProps={{
+              maxLength: 100,
+            }}
+          />
+          <Box mt={2} display="flex" justifyContent="space-between">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleUpdate}
+              disabled={!!error}
+            >
+              Update
+            </Button>
+            <Button variant="contained" onClick={handleClose}>
+              Close
+            </Button>
+          </Box>
+        </Box>
+      </Modal>
     </Box>
   );
 };
